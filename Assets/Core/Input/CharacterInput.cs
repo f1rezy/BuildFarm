@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class CharacterInput : MonoBehaviour
+public class CharacterInput : MonoBehaviour, ICharacterInput
 {
     private GameInput _gameInput;
+    private Vector3 _inputDirection;
 
     private void Awake()
     {
@@ -12,13 +13,11 @@ public class CharacterInput : MonoBehaviour
 
     private void Update()
     {
-        ReadMovement();
+        _inputDirection = _gameInput.Gameplay.Movement.ReadValue<Vector2>();
     }
 
-    private void ReadMovement()
+    public Vector3 GetDirection()
     {
-        var inputDirection = _gameInput.Gameplay.Movement.ReadValue<Vector2>();
-
-        // Передаём движение
+        return _inputDirection;
     }
 }
