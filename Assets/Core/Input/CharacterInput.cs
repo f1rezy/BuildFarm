@@ -4,17 +4,11 @@ public class CharacterInput : ICharacterInput
 {
     private GameInput _gameInput;
 
-    public CharacterInput(GameInput gameInput)
+    public CharacterInput()
     {
         _gameInput = new GameInput();
         _gameInput.Enable();
     }
-
-    //private void Awake()
-    //{
-    //    _gameInput = new GameInput();
-    //    _gameInput.Enable();
-    //}
 
     public Vector3 GetDirection()
     {

@@ -1,60 +1,38 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(CharacterAnimator))]
 public class CharacterMovement : MonoBehaviour
 {
-    [SerializeField] private Animator _animator;
-    [SerializeField] private CharacterInput _input;
     [SerializeField] private float _speed = 5;
-    [SerializeField] private float _rotationSpeed = 5;
 
-    private Vector3 _lastDeltaPos; 
-    
-    private CharacterStates State
+    private CharacterAnimator _animator;
+    private CharacterInput _input;
+
+    private void Start()
     {
-        get => (CharacterStates)_animator.GetInteger("state");
-        set => _animator.SetInteger("state", (int)value);
+        _input = new CharacterInput();
+        _animator = GetComponent<CharacterAnimator>();
     }
 
     private void Run(Vector3 direction)
     {
-        State = CharacterStates.Run;
-        
-        Vector3 deltaPos = direction * _speed * Time.deltaTime;
+        Vector3 nextPosition = transform.position + (direction * _speed * Time.deltaTime);
 
-        transform.position += deltaPos;
-        
-        if (deltaPos.magnitude > 0)
-        {
-            _lastDeltaPos = deltaPos;
-        }
-
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(_lastDeltaPos), Time.deltaTime * _rotationSpeed);
+        transform.LookAt(nextPosition);
+        transform.position = nextPosition;
     }
 
-    private void Idle()
-    {
-        State = CharacterStates.Idle;
-    }
-
-    private void Update()
+    private void FixedUpdate()
     {
         Vector3 direction = _input.GetDirection();
-        direction.z = direction.y;
-        direction.y = 0;
-
         if (direction.magnitude > 0)
         {
             Run(direction);
+            _animator.SetRunning();
         }
         else
         {
-            Idle();
+            _animator.SetIdle();
         }
     }
-}
-
-enum CharacterStates
-{
-    Idle,
-    Run
 }
