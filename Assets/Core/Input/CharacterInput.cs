@@ -1,23 +1,25 @@
 using UnityEngine;
 
-public class CharacterInput : MonoBehaviour, ICharacterInput
+public class CharacterInput : ICharacterInput
 {
     private GameInput _gameInput;
-    private Vector3 _inputDirection;
 
-    private void Awake()
+    public CharacterInput(GameInput gameInput)
     {
         _gameInput = new GameInput();
         _gameInput.Enable();
     }
 
-    private void Update()
-    {
-        _inputDirection = _gameInput.Gameplay.Movement.ReadValue<Vector2>();
-    }
+    //private void Awake()
+    //{
+    //    _gameInput = new GameInput();
+    //    _gameInput.Enable();
+    //}
 
     public Vector3 GetDirection()
     {
-        return _inputDirection;
+        var inputDirection = _gameInput.Gameplay.Movement.ReadValue<Vector2>();
+        var direction = new Vector3(inputDirection.x, 0f, inputDirection.y);
+        return direction;
     }
 }
