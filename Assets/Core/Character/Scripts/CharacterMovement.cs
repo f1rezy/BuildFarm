@@ -4,9 +4,12 @@
 public class CharacterMovement : MonoBehaviour
 {
     [SerializeField] private float _speed = 5;
+    [SerializeField] private float _rotationSpeed = 5;
 
     private CharacterAnimator _animator;
     private CharacterInput _input;
+
+    private Vector3 _lastDeltaPosition;
 
     private void Start()
     {
@@ -16,10 +19,10 @@ public class CharacterMovement : MonoBehaviour
 
     private void Run(Vector3 direction)
     {
-        Vector3 nextPosition = transform.position + (direction * _speed * Time.deltaTime);
+        Vector3 deltaPosition = direction * _speed * Time.deltaTime;
 
-        transform.LookAt(nextPosition);
-        transform.position = nextPosition;
+        transform.position += _lastDeltaPosition = deltaPosition;
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(_lastDeltaPosition), Time.deltaTime * _rotationSpeed);
     }
 
     private void FixedUpdate()
