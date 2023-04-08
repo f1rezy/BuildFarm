@@ -18,7 +18,7 @@ public class Field : MonoBehaviour, IProductiveBuilding
 
     private void InitField()
     {
-        var itemsStartPosition = transform.position + new Vector3(0.5f, 0, 0.5f);
+        var itemsStartPosition = transform.position + new Vector3(1.5f, 0, 1.5f);
 
         for (int i = 0; i < _fieldSize.x; i++)
         {
