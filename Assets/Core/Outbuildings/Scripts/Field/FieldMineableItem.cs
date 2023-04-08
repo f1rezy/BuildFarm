@@ -13,15 +13,20 @@ public class FieldMineableItem : MonoBehaviour
     private float _growthProgress = 0f;
     private int _plantsCount = 3;
 
+    public int PlantsPerMine => _plantsCount;
     public Action<float> OnGrowthProgressChanged;
 
-    public void Mine(Action<int> OnMined, float miningSpeed = 1f)
+    public void Mine(Action<int> onMined = null, float miningSpeed = 1f)
     {
         if (CanMine())
         {
-            StartCoroutine(StartMining(miningSpeed));
-            OnMined?.Invoke(_plantsCount);
+            StartCoroutine(StartMining(miningSpeed, onMined));
         }
+    }
+
+    public void StopMining()
+    {
+        StopAllCoroutines();
     }
 
     public bool CanMine()
@@ -49,10 +54,12 @@ public class FieldMineableItem : MonoBehaviour
         OnGrowthProgressChanged?.Invoke(_growthProgress);
     }
 
-    private IEnumerator StartMining(float miningSpeed)
+    private IEnumerator StartMining(float miningSpeed, Action<int> onMined)
     {
-        yield return new WaitForSeconds(_miningTime / miningSpeed);
+        StartCoroutine(_animator.AnimateMining(_miningTime * miningSpeed));
+        yield return new WaitForSeconds(_miningTime * miningSpeed);
 
+        onMined?.Invoke(_plantsCount);
         _growthProgress = 0f;
         OnGrowthProgressChanged?.Invoke(_growthProgress);
     }
