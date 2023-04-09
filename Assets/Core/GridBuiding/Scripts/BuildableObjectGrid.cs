@@ -6,39 +6,59 @@ public class BuildableObjectGrid : MonoBehaviour
 {
     [SerializeField] private Vector2Int _gridSize = new Vector2Int(10, 10);
 
-    public Dictionary<Vector2Int, BuildableObject> _grid;
-    private BuildableObject _flyingBuilding;
+    private BuildableObject _buildingPrefab;
+    private Dictionary<Vector2Int, BuildableObject> _grid;
 
     private void Awake()
     {
         _grid = new Dictionary<Vector2Int, BuildableObject>(_gridSize.x * _gridSize.y);
     }
 
-    private void SetNull()
+    private void ResetCurrentBuildable()
     {
-        _flyingBuilding.SetNormalColor();
-        _flyingBuilding.OnPositionSetted -= SetNull;
-        _flyingBuilding = null;
+        _buildingPrefab.SetNormalColor();
+        _buildingPrefab.OnPositionSetted -= ResetCurrentBuildable;
+        _buildingPrefab = null;
+    }
+
+    public void SetToGrid(Vector3 position, Vector2 size)
+    {
+        int xPosition = Mathf.RoundToInt(position.x + transform.position.x);
+        int yPosition = Mathf.RoundToInt(position.z + transform.position.z);
+
+        for (int x = xPosition; x < xPosition + size.x; x++)
+        {
+            for (int y = yPosition; y < yPosition + size.y; y++)
+            {
+                _grid[new Vector2Int(x, y)] = _buildingPrefab;
+            }
+        }
     }
 
     public void CreateBuilding(BuildableObject buildingPrefab)
     {
-        if (_flyingBuilding != null)
+        if (_buildingPrefab != null)
         {
-            Destroy(_flyingBuilding.gameObject);
+            Destroy(_buildingPrefab.gameObject);
         }
 
-        _flyingBuilding = Instantiate(buildingPrefab);
-        _flyingBuilding.Init(this);
-        _flyingBuilding.OnPositionSetted += SetNull;
+        _buildingPrefab = Instantiate(buildingPrefab);
+        _buildingPrefab.Init(this);
+        _buildingPrefab.OnPositionSetted += ResetCurrentBuildable;
+
+        int x = Mathf.RoundToInt(_buildingPrefab.transform.position.x);
+        int y = Mathf.RoundToInt(_buildingPrefab.transform.position.z);
+
+        _buildingPrefab.SetColor(CheckAvailability(x, y));
     }
 
     public bool CheckAvailability(int x, int y)
     {
         bool available = true;
+        Vector3 offset = transform.position;
 
-        if (x < 0 || x > _gridSize.x - _flyingBuilding._size.x) available = false;
-        if (y < 0 || y > _gridSize.y - _flyingBuilding._size.y) available = false;
+        if (x < offset.x || x > _gridSize.x + offset.x - _buildingPrefab._size.x) available = false;
+        if (y < offset.z || y > _gridSize.y + offset.z - _buildingPrefab._size.y) available = false;
 
         if (available && IsPlaceTaken(x, y)) available = false;
 
@@ -47,20 +67,30 @@ public class BuildableObjectGrid : MonoBehaviour
 
     private bool IsPlaceTaken(int placeX, int placeY)
     {
-        for (int x = 0; x < _flyingBuilding._size.x; x++)
+        for (int x = 0; x < _buildingPrefab._size.x; x++)
         {
-            for (int y = 0; y < _flyingBuilding._size.y; y++)
+            for (int y = 0; y < _buildingPrefab._size.y; y++)
             {
                 var position = new Vector2Int(placeX + x, placeY + y);
 
-                if (_grid.ContainsKey(position)
-                    && _grid[position] != null)
+                if (_grid.ContainsKey(position) && _grid[position] != null)
                 {
                     return true;
                 }
             }
         }
-
         return false;
+    }
+
+    private void OnDrawGizmos()
+    {
+        for (int x = 0; x < _gridSize.x; x++)
+        {
+            for (int y = 0; y < _gridSize.y; y++)
+            {
+                Gizmos.color = Color.white;
+                Gizmos.DrawCube(transform.position + new Vector3(x, 0f, y), new Vector3(1f, 0.1f, 1f));
+            }
+        }
     }
 }

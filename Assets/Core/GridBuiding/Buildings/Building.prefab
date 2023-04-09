@@ -82,8 +82,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdf8dabe5d8db4f3b9c36c88b02d4117, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canBuildColor: {r: 0, g: 1, b: 0, a: 1}
-  _cantBuildColor: {r: 1, g: 0, b: 0, a: 1}
+  _canBuildColor: {r: 0.5415094, g: 1, b: 0.5415094, a: 1}
+  _cantBuildColor: {r: 1, g: 0.4943396, b: 0.4943396, a: 1}
   _renderer: {fileID: 5389649095090844143}
 --- !u!114 &9016443393044510616
 MonoBehaviour:
