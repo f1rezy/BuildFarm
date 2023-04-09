@@ -6,57 +6,45 @@ public class BuildableObjectGrid : MonoBehaviour
 {
     [SerializeField] private Vector2Int _gridSize = new Vector2Int(10, 10);
 
-    private BuildableObject[,] _grid;
+    private Dictionary<Vector2Int, BuildableObject> _grid;
     private BuildableObject _flyingBuilding;
-    private Camera _cameraMain;
 
     private void Awake()
     {
-        _grid = new BuildableObject[_gridSize.x, _gridSize.y];
-
-        _cameraMain = Camera.main;
+        _grid = new Dictionary<Vector2Int, BuildableObject>(_gridSize.x * _gridSize.y);
     }
 
-    public void StartPlacingBuilding(BuildableObject buildingPrefab)
+    private void SetNull()
+    {
+        _flyingBuilding.SetNormalColor();
+        _flyingBuilding.OnPositionSetted -= SetNull;
+        _flyingBuilding = null;
+    }
+
+    public void CreateBuilding(BuildableObject buildingPrefab)
     {
         if (_flyingBuilding != null)
         {
             Destroy(_flyingBuilding.gameObject);
         }
 
+        //position
+
         _flyingBuilding = Instantiate(buildingPrefab);
+        _flyingBuilding.Init(this);
+        _flyingBuilding.OnPositionSetted += SetNull;
     }
 
-    private void Update()
+    public bool CheckAvailability(int x, int y)
     {
-        if (_flyingBuilding != null)
-        {
-            var groundPlane = new Plane(Vector3.up, Vector3.zero);
-            Ray ray = _cameraMain.ScreenPointToRay(Input.mousePosition);
+        bool available = true;
 
-            if (groundPlane.Raycast(ray, out float position))
-            {
-                Vector3 worldPosition = ray.GetPoint(position);
+        if (x < 0 || x > _gridSize.x - _flyingBuilding._size.x) available = false;
+        if (y < 0 || y > _gridSize.y - _flyingBuilding._size.y) available = false;
 
-                int x = Mathf.RoundToInt(worldPosition.x);
-                int y = Mathf.RoundToInt(worldPosition.z);
+        if (available && IsPlaceTaken(x, y)) available = false;
 
-                bool available = true;
-
-                if (x < 0 || x > _gridSize.x - _flyingBuilding._size.x) available = false;
-                if (y < 0 || y > _gridSize.y - _flyingBuilding._size.y) available = false;
-
-                if (available && IsPlaceTaken(x, y)) available = false;
-
-                _flyingBuilding.transform.position = new Vector3(x, 0f, y);
-                _flyingBuilding.SetColor(available);
-
-                if (available && Input.GetMouseButtonDown(0))
-                {
-                    PlaceFlyingBuilding(x, y);
-                }
-            }
-        }
+        return available;
     }
 
     private bool IsPlaceTaken(int placeX, int placeY)
@@ -65,24 +53,16 @@ public class BuildableObjectGrid : MonoBehaviour
         {
             for (int y = 0; y < _flyingBuilding._size.y; y++)
             {
-                if (_grid[placeX + x, placeY + y] != null) return true;
+                var position = new Vector2Int(placeX + x, placeY + y);
+
+                if (_grid.ContainsKey(position)
+                    && _grid[position] != null)
+                {
+                    return true;
+                }
             }
         }
 
         return false;
-    }
-
-    private void PlaceFlyingBuilding(int placeX, int placeY)
-    {
-        for (int x = 0; x < _flyingBuilding._size.x; x++)
-        {
-            for (int y = 0; y < _flyingBuilding._size.y; y++)
-            {
-                _grid[placeX + x, placeY + y] = _flyingBuilding;
-            }
-        }
-
-        _flyingBuilding.SetNormalColor();
-        _flyingBuilding = null;
     }
 }
