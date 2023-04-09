@@ -6,7 +6,7 @@ public class BuildableObjectGrid : MonoBehaviour
 {
     [SerializeField] private Vector2Int _gridSize = new Vector2Int(10, 10);
 
-    private Dictionary<Vector2Int, BuildableObject> _grid;
+    public Dictionary<Vector2Int, BuildableObject> _grid;
     private BuildableObject _flyingBuilding;
 
     private void Awake()
@@ -27,8 +27,6 @@ public class BuildableObjectGrid : MonoBehaviour
         {
             Destroy(_flyingBuilding.gameObject);
         }
-
-        //position
 
         _flyingBuilding = Instantiate(buildingPrefab);
         _flyingBuilding.Init(this);

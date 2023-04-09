@@ -57,6 +57,7 @@ public class BuildableObject : MonoBehaviour
         {
             _touchHandler.OnDrag -= Move;
             OnPositionSetted?.Invoke();
+            InflateDictionary((int)transform.position.x, (int)transform.position.y);
         }
     }
 
@@ -86,6 +87,17 @@ public class BuildableObject : MonoBehaviour
                 Gizmos.color = Color.cyan;
 
                 Gizmos.DrawCube(transform.position + new Vector3(x, 0f, y), new Vector3(1f, .1f, 1f));
+            }
+        }
+    }
+
+    private void InflateDictionary(int placeX, int placeY)
+    {
+        for (int x = placeX; x < placeX + _size.x; x++)
+        {
+            for (int y = placeY; y < placeY + _size.y; y++)
+            {
+                //_grid._grid[new Vector2Int(x, y)] = this;
             }
         }
     }
