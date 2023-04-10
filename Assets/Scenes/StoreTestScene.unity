@@ -317,7 +317,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -351,6 +351,36 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 506127811}
     m_Modifications:
+    - target: {fileID: 2102079493445832938, guid: e640c0acb240a764e8495c065e009e02,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2102079493445832938, guid: e640c0acb240a764e8495c065e009e02,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2102079493445832938, guid: e640c0acb240a764e8495c065e009e02,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367210161980327184, guid: e640c0acb240a764e8495c065e009e02,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367210161980327184, guid: e640c0acb240a764e8495c065e009e02,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367210161980327184, guid: e640c0acb240a764e8495c065e009e02,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2388495819259930896, guid: e640c0acb240a764e8495c065e009e02,
         type: 3}
       propertyPath: m_Pivot.x
@@ -460,6 +490,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Store
+      objectReference: {fileID: 0}
+    - target: {fileID: 6712238840371676811, guid: e640c0acb240a764e8495c065e009e02,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6712238840371676811, guid: e640c0acb240a764e8495c065e009e02,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6712238840371676811, guid: e640c0acb240a764e8495c065e009e02,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
