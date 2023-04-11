@@ -6,14 +6,14 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class BuildingInteractableArea : MonoBehaviour
 {
-    public Action OnInteractStarted;
-    public Action OnInteractFinished;
+    public Action OnInteractionStarted;
+    public Action OnInteractionFinished;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out CharacterMovement character))
         {
-            OnInteractStarted?.Invoke();
+            OnInteractionStarted?.Invoke();
         }
     }
 
@@ -21,7 +21,7 @@ public class BuildingInteractableArea : MonoBehaviour
     {
         if (other.TryGetComponent(out CharacterMovement character))
         {
-            OnInteractFinished?.Invoke();
+            OnInteractionFinished?.Invoke();
         }
     }
 }

@@ -14,6 +14,8 @@ public class FieldMineableItem : MonoBehaviour
     private int _plantsCount = 3;
 
     public int PlantsPerMine => _plantsCount;
+    public float GrowthProgress => _growthProgress;
+
     public Action<float> OnGrowthProgressChanged;
 
     public void Mine(Action<int> onMined = null, float miningSpeed = 1f)
