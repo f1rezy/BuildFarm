@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(IStorager))]
 public class Miner : MonoBehaviour
 {
-    private float _miningSpeed = 1f;
     private IStorager _storager;
+    private float _miningSpeed = 1f;
     private bool _isMining = false;
 
     public Action<int> OnMined;
@@ -56,5 +57,5 @@ public class Miner : MonoBehaviour
         }
     }
 
-    private void Storage(int count ) => _storager.Add(count);
+    private void Storage(int count ) => _storager.Put(count);
 }
