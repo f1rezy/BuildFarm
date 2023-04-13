@@ -93,9 +93,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3620894499161863268}
   - component: {fileID: 867247672312407832}
-  - component: {fileID: 5924003582676977594}
   - component: {fileID: 645675881967537858}
   - component: {fileID: 8137258668884035233}
+  - component: {fileID: 9083098150984846215}
   m_Layer: 0
   m_Name: Field
   m_TagString: Untagged
@@ -135,19 +135,6 @@ MonoBehaviour:
   _fieldSize: {x: 3, y: 3}
   _fieldMineableItemPrefab: {fileID: -2866526228568029786, guid: 6ddb69547f812e0479426199b1d82f26,
     type: 3}
-  _popUp: {fileID: 2712107931282791530}
---- !u!114 &5924003582676977594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6414991327941417603}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c889544b6092d64ab9c0f86d9e0c0c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &645675881967537858
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -196,6 +183,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &9083098150984846215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6414991327941417603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c573e5f7af4f2a4dbaca8be6df22015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _popUp: {fileID: 2712107931282791530}
 --- !u!1001 &5924759211861945360
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -266,23 +266,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7583077734266278164, guid: 4e8c34b9183454040aa3e87da9de01e9,
         type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.06765225
-      objectReference: {fileID: 0}
-    - target: {fileID: 7583077734266278164, guid: 4e8c34b9183454040aa3e87da9de01e9,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.010926071
-      objectReference: {fileID: 0}
-    - target: {fileID: 7583077734266278164, guid: 4e8c34b9183454040aa3e87da9de01e9,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.98488724
-      objectReference: {fileID: 0}
-    - target: {fileID: 7583077734266278164, guid: 4e8c34b9183454040aa3e87da9de01e9,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.15906268
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

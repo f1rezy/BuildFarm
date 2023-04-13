@@ -11,7 +11,7 @@ public class FieldMineableItem : MonoBehaviour
     [SerializeField] private FieldItemAnimator _animator;
 
     private float _growthProgress = 0f;
-    private int _plantsCount = 3;
+    private int _plantsCount = 2;
 
     public int PlantsPerMine => _plantsCount;
     public float GrowthProgress => _growthProgress;

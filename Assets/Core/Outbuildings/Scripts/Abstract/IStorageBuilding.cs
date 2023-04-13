@@ -8,6 +8,6 @@ public interface IStorageBuilding
     public bool IsEnoughSpaceToPut(int count);
     public bool IsEnoughItemsToTake(int count);
 
-    public void PutItems(int count, Action<int> callback = null);
-    public void GetItems(int count, Action<int> callback = null);
+    public int PutItems(int count, Action<int> callback = null);
+    public int GetItems(int count, Action<int> callback = null);
 }
