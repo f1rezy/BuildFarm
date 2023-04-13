@@ -31,7 +31,7 @@ public class ToolManager: MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction * 100f, Color.yellow);
         Physics.Raycast(ray, out RaycastHit hit);
         return hit.collider != null && hit.collider.gameObject.TryGetComponent(out FieldMineableItem mineable) &&
-               hit.distance < _tool.MinDistanceToMine;
+               hit.distance < _tool.MinDistanceToMine && mineable.CanMine();
     }
 
     public bool ToolIsSet => _tool != null;
@@ -45,7 +45,7 @@ public class ToolManager: MonoBehaviour
 
     private void Update()
     {
-        if (CanMine() && !IsMining && _storager.CanStorage(3))
+        if (ToolIsSet && CanMine() && !IsMining && _storager.CanStorage(3))
         {
             _animator.SetMining();
             StartCoroutine(Mine());
