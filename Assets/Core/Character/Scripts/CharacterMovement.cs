@@ -3,8 +3,9 @@
 [RequireComponent(typeof(CharacterAnimator))]
 public class CharacterMovement : MonoBehaviour
 {
-    [SerializeField] private float _speed = 5;
+    [SerializeField] private float _speed = 5f;
     [SerializeField] private float _rotationSpeed = 5;
+    [SerializeField] private Rigidbody _rigidbody;
 
     private CharacterAnimator _animator;
     private CharacterInput _input;
@@ -19,18 +20,25 @@ public class CharacterMovement : MonoBehaviour
 
     private void Run(Vector3 direction)
     {
-        Vector3 deltaPosition = direction * _speed * Time.deltaTime;
+        Vector3 velocity = direction * _speed;
+        _rigidbody.velocity = velocity;
 
-        transform.position += _lastDeltaPosition = deltaPosition;
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(_lastDeltaPosition), Time.deltaTime * _rotationSpeed);
+        if (direction != Vector3.zero)
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(velocity), Time.deltaTime * _rotationSpeed);
+        }
+
+
+        //Vector3 deltaPosition = direction * _speed * Time.deltaTime;
+        //transform.position += _lastDeltaPosition = deltaPosition;
     }
 
     private void FixedUpdate()
     {
         Vector3 direction = _input.GetDirection();
+        Run(direction);
         if (direction.magnitude > 0)
         {
-            Run(direction);
             _animator.SetRunning();
         }
         else
