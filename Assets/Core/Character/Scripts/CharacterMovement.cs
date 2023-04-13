@@ -8,13 +8,15 @@ public class CharacterMovement : MonoBehaviour
 
     private CharacterAnimator _animator;
     private CharacterInput _input;
-
+    private ToolManager _toolManager;
+    
     private Vector3 _lastDeltaPosition;
-
+    
     private void Start()
     {
         _input = new CharacterInput();
         _animator = GetComponent<CharacterAnimator>();
+        _toolManager = GetComponent<ToolManager>();
     }
 
     private void Run(Vector3 direction)

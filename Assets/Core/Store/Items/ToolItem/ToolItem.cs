@@ -1,7 +1,11 @@
-﻿public class ToolItem: StoreItem
+﻿using UnityEngine;
+
+public class ToolItem: StoreItem
 {
-    // protected override void Buy()
-    // {
-    //     
-    // }
+    [SerializeField] private Tool _tool;
+    [SerializeField] private ToolManager _toolManager;
+    protected override void Buy()
+    {
+        _toolManager.SetTool(_tool);
+    }
 }

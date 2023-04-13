@@ -6,6 +6,7 @@ public class CharacterAnimator : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
 
+    private const string MiningTrigger = "Mining";
     private const string IdleTrigger = "Idle";
     private const string RunningTrigger = "Running";
 
@@ -17,5 +18,10 @@ public class CharacterAnimator : MonoBehaviour
     public void SetRunning()
     {
         _animator.SetTrigger(RunningTrigger);
+    }
+
+    public void SetMining()
+    {
+        _animator.SetTrigger(MiningTrigger);
     }
 }

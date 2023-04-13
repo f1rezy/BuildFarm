@@ -293,6 +293,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cost: 100
   _buyButton: {fileID: 1225519943521751477}
+  _toolManager: {fileID: 0}
+  _tool: {fileID: 4679944634595896144, guid: 042a5c920523fc545a49e6b66bb01a14, type: 3}
 --- !u!1 &6245998062714121549
 GameObject:
   m_ObjectHideFlags: 0

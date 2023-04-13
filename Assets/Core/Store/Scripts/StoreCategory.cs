@@ -9,7 +9,14 @@ public class StoreCategory : MonoBehaviour
     
     private void Mount(GameObject itemsRow, StoreItem item)
     {
-        Instantiate(item, itemsRow.transform);
+        if (item.isActiveAndEnabled && item.gameObject.activeInHierarchy)
+        {
+            item.gameObject.transform.SetParent(itemsRow.gameObject.transform);
+        }
+        else
+        {
+            Instantiate(item, itemsRow.transform);
+        }
     }
     
     private void Init()
@@ -20,8 +27,6 @@ public class StoreCategory : MonoBehaviour
             if(i != 0 && i % 3 == 0) itemsRow = Instantiate(_itemsRowPrefab, _categoryView.GetComponent<ScrollRect>().content);
             Mount(itemsRow, _items[i]);
         }
-
-        // Hide();
     }
     
     public void Start()
