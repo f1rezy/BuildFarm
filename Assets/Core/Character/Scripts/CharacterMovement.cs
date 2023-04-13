@@ -5,8 +5,8 @@ public class CharacterMovement : MonoBehaviour
 {
     [SerializeField] private float _speed = 5f;
     [SerializeField] private float _rotationSpeed = 5;
-    [SerializeField] private Rigidbody _rigidbody;
 
+    private Rigidbody _rigidbody;
     private CharacterAnimator _animator;
     private CharacterInput _input;
 
@@ -16,6 +16,7 @@ public class CharacterMovement : MonoBehaviour
     {
         _input = new CharacterInput();
         _animator = GetComponent<CharacterAnimator>();
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
     private void Run(Vector3 direction)
@@ -27,10 +28,6 @@ public class CharacterMovement : MonoBehaviour
         {
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(velocity), Time.deltaTime * _rotationSpeed);
         }
-
-
-        //Vector3 deltaPosition = direction * _speed * Time.deltaTime;
-        //transform.position += _lastDeltaPosition = deltaPosition;
     }
 
     private void FixedUpdate()
