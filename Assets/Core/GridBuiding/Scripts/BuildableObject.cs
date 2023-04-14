@@ -53,8 +53,8 @@ public class BuildableObject : MonoBehaviour
 
     private void Move(Vector3 position)
     {
-        int x = Mathf.RoundToInt(position.x) - _size.x;
-        int y = Mathf.RoundToInt(position.z) - _size.y;
+        int x = Mathf.RoundToInt(position.x) - _size.x / 2;
+        int y = Mathf.RoundToInt(position.z) - _size.y / 2;
 
         _available = _grid.CheckAvailability(x, y);
         transform.position = new Vector3(x, 0f, y);
