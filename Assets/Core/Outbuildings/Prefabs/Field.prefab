@@ -54,6 +54,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fieldSize: {x: 3, y: 3}
+  _offset: {x: 1, y: 0, z: 1}
   _fieldMineableItemPrefab: {fileID: -2866526228568029786, guid: 6ddb69547f812e0479426199b1d82f26,
     type: 3}
 --- !u!65 &645675881967537858

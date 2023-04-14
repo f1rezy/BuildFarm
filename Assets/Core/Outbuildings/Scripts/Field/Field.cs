@@ -7,6 +7,7 @@ using UnityEngine;
 public class Field : MonoBehaviour, IProductiveBuilding, IPopUpSupporter
 {
     [SerializeField] private Vector2Int _fieldSize;
+    [SerializeField] private Vector3 _offset = new Vector3(1f, 0f, 1f);
     [SerializeField] private FieldMineableItem _fieldMineableItemPrefab;
 
     private FieldMineableItem[,] _field;
@@ -23,7 +24,7 @@ public class Field : MonoBehaviour, IProductiveBuilding, IPopUpSupporter
 
     private void InitField()
     {
-        var itemsStartPosition = transform.position + new Vector3(1.5f, 0, 1.5f);
+        var itemsStartPosition = transform.position + _offset;
 
         for (int i = 0; i < _fieldSize.x; i++)
         {
