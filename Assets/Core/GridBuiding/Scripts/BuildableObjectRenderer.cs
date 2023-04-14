@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BuildableObjectRenderer : MonoBehaviour
 {
-    [SerializeField] private Color _canBuildColor = Color.green;
-    [SerializeField] private Color _cantBuildColor = Color.red;
+    [SerializeField] private Color _canBuildColor;
+    [SerializeField] private Color _cantBuildColor;
     [SerializeField] private Renderer _renderer;
 
     public void SetColorOnPositionChanged(bool canBuild)

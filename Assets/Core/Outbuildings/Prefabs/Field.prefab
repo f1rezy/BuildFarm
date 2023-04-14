@@ -34,6 +34,7 @@ Transform:
   m_Children:
   - {fileID: 6795926471389047820}
   - {fileID: 7211566895342410475}
+  - {fileID: 3284737170298830999}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -587,6 +588,105 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4294949768431968, guid: 070d2a04ccc36704c941b3ddc10e4f96,
     type: 3}
   m_PrefabInstance: {fileID: 1797955496373187096}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2441717425759010955
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3620894499161863268}
+    m_Modifications:
+    - target: {fileID: 898188859438809116, guid: 313abcf2aa499c146900c194c24dd629,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 898188859438809116, guid: 313abcf2aa499c146900c194c24dd629,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 898188859438809116, guid: 313abcf2aa499c146900c194c24dd629,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 898188859438809116, guid: 313abcf2aa499c146900c194c24dd629,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 898188859438809116, guid: 313abcf2aa499c146900c194c24dd629,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 898188859438809116, guid: 313abcf2aa499c146900c194c24dd629,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 898188859438809116, guid: 313abcf2aa499c146900c194c24dd629,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 898188859438809116, guid: 313abcf2aa499c146900c194c24dd629,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 898188859438809116, guid: 313abcf2aa499c146900c194c24dd629,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 898188859438809116, guid: 313abcf2aa499c146900c194c24dd629,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 898188859438809116, guid: 313abcf2aa499c146900c194c24dd629,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1433359274605254260, guid: 313abcf2aa499c146900c194c24dd629,
+        type: 3}
+      propertyPath: m_Name
+      value: Pop Up Building Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1466087843666127151, guid: 313abcf2aa499c146900c194c24dd629,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.78679246
+      objectReference: {fileID: 0}
+    - target: {fileID: 1466087843666127151, guid: 313abcf2aa499c146900c194c24dd629,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1466087843666127151, guid: 313abcf2aa499c146900c194c24dd629,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.78982675
+      objectReference: {fileID: 0}
+    - target: {fileID: 7583077734266278164, guid: 313abcf2aa499c146900c194c24dd629,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.26
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 313abcf2aa499c146900c194c24dd629, type: 3}
+--- !u!4 &3284737170298830999 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 898188859438809116, guid: 313abcf2aa499c146900c194c24dd629,
+    type: 3}
+  m_PrefabInstance: {fileID: 2441717425759010955}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2527282866028070174
 PrefabInstance:
@@ -1287,6 +1387,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pop Up Item
+      objectReference: {fileID: 0}
+    - target: {fileID: 1433359274605254260, guid: 4e8c34b9183454040aa3e87da9de01e9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7583077734266278164, guid: 4e8c34b9183454040aa3e87da9de01e9,
         type: 3}

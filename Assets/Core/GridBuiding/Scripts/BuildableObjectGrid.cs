@@ -57,8 +57,8 @@ public class BuildableObjectGrid : MonoBehaviour
         bool available = true;
         Vector3 offset = transform.position;
 
-        if (x < offset.x || x > _gridSize.x + offset.x - _buildingPrefab._size.x) available = false;
-        if (y < offset.z || y > _gridSize.y + offset.z - _buildingPrefab._size.y) available = false;
+        if (x < offset.x || x > _gridSize.x + offset.x - _buildingPrefab.Size.x) available = false;
+        if (y < offset.z || y > _gridSize.y + offset.z - _buildingPrefab.Size.y) available = false;
 
         if (available && IsPlaceTaken(x, y)) available = false;
 
@@ -67,9 +67,9 @@ public class BuildableObjectGrid : MonoBehaviour
 
     private bool IsPlaceTaken(int placeX, int placeY)
     {
-        for (int x = 0; x < _buildingPrefab._size.x; x++)
+        for (int x = 0; x < _buildingPrefab.Size.x; x++)
         {
-            for (int y = 0; y < _buildingPrefab._size.y; y++)
+            for (int y = 0; y < _buildingPrefab.Size.y; y++)
             {
                 var position = new Vector2Int(placeX + x, placeY + y);
 
