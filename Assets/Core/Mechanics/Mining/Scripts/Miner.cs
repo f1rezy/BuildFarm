@@ -18,7 +18,7 @@ public class Miner : MonoBehaviour
     public bool ToolIsSet => _tool != null;
     public bool IsMiningAnimation { get; private set; }
     
-    private IEnumerator Mine()
+    private IEnumerator MineAnimation()
     {
         yield return new WaitForSeconds(1f);
         IsMiningAnimation = false;
@@ -55,7 +55,7 @@ public class Miner : MonoBehaviour
                 _animator.SetMining();
             else
                 _animator.SetGathering();
-            StartCoroutine(Mine());
+            StartCoroutine(MineAnimation());
         }
     }
 
