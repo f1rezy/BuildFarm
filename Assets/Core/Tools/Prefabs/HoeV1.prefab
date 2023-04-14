@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3894207939001033675}
   - component: {fileID: 1292522326104561409}
   - component: {fileID: 5618373356942540666}
-  - component: {fileID: 4679944634595896144}
+  - component: {fileID: -2565797316083990887}
   m_Layer: 0
   m_Name: HoeV1
   m_TagString: Untagged
@@ -108,7 +108,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7625642800717388127, guid: cac02654c83b2c94faf8ee2dfcaab1d9, type: 3}
---- !u!114 &4679944634595896144
+--- !u!114 &-2565797316083990887
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,3 +121,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _minDistaneToMine: 1
+  _miningSpeed: 1.5

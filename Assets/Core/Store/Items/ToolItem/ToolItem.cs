@@ -2,10 +2,10 @@
 
 public class ToolItem: StoreItem
 {
-    [SerializeField] private Tool _tool;
-    [SerializeField] private ToolManager _toolManager;
+    [SerializeField] private MiningTool _tool;
+    [SerializeField] private Miner _miner;
     protected override void Buy()
     {
-        _toolManager.SetTool(_tool);
+        _miner.SetTool(_tool);
     }
 }

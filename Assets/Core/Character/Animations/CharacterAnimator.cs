@@ -9,6 +9,7 @@ public class CharacterAnimator : MonoBehaviour
     private const string MiningTrigger = "Mining";
     private const string IdleTrigger = "Idle";
     private const string RunningTrigger = "Running";
+    private const string GatheringTrigger = "Gathering";
 
     public void SetIdle()
     {
@@ -23,5 +24,10 @@ public class CharacterAnimator : MonoBehaviour
     public void SetMining()
     {
         _animator.SetTrigger(MiningTrigger);
+    }
+    
+    public void SetGathering()
+    {
+        _animator.SetTrigger(GatheringTrigger);
     }
 }

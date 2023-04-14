@@ -35,7 +35,7 @@ Transform:
   m_Children:
   - {fileID: 1420272929555234747}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5602822039707233760
 MonoBehaviour:
@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a01d757f4437b6488ef938e368be605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _toolPoint: {fileID: 3457272626791418365}
 --- !u!114 &6880963342289287274
 MonoBehaviour:
   m_ObjectHideFlags: 0
