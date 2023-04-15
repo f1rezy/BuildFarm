@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,8 @@ public class BuildableObjectGrid : MonoBehaviour
 
     private BuildableObject _buildingPrefab;
     private Dictionary<Vector2Int, BuildableObject> _grid;
+
+    public Action OnBuilded;
 
     private void Awake()
     {
@@ -33,6 +36,8 @@ public class BuildableObjectGrid : MonoBehaviour
                 _grid[new Vector2Int(x, y)] = _buildingPrefab;
             }
         }
+
+        OnBuilded?.Invoke();
     }
 
     public void CreateBuilding(BuildableObject buildingPrefab)
