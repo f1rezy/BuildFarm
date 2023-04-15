@@ -46,7 +46,7 @@ public class HangarWindow : MonoBehaviour
     public void TakeItems()
     {
         var itemsCount = _hangar.GetItems(_hangar.Count);
-        _characterBag.Put(itemsCount);
+        _characterBag.Add(itemsCount);
         UpdateHeader();
     }
 

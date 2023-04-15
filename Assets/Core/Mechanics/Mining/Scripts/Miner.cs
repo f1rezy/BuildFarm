@@ -51,7 +51,7 @@ public class Miner : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.TryGetComponent(out FieldMineableItem mineable) &&
             _storager.CanStorage(mineable.PlantsPerMine) &&

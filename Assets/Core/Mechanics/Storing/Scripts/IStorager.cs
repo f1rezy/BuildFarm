@@ -6,7 +6,7 @@ public interface IStorager
 {
     public bool CanStorage(int count);
 
-    public int Put(int count);
+    public int Add(int count);
     public int Take(int count);
 
     public int GetCount();

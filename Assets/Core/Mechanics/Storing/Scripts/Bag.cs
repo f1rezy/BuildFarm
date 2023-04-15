@@ -8,7 +8,7 @@ public class Bag : MonoBehaviour, IStorager
 
     [SerializeField] private int _taken = 0;
 
-    public int Put(int count)
+    public int Add(int count)
     {
         if (!CanStorage(count))
             count = _capacity - _taken;

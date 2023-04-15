@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 118460187494755438}
   - component: {fileID: 3894207939001033675}
   - component: {fileID: 1292522326104561409}
-  - component: {fileID: 5618373356942540666}
   - component: {fileID: -2565797316083990887}
   m_Layer: 0
   m_Name: HoeV1
@@ -86,28 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5618373356942540666
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 787859751971518164}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7625642800717388127, guid: cac02654c83b2c94faf8ee2dfcaab1d9, type: 3}
 --- !u!114 &-2565797316083990887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,5 +97,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4324c397203bfd34da76093a64ef3ddf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minDistaneToMine: 1
   _miningSpeed: 1.5
