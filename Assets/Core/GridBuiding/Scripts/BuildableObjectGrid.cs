@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BuildableObjectGrid : MonoBehaviour
 {
+    [SerializeField] private CameraFollower _cameraFollower;
     [SerializeField] private Vector2Int _gridSize = new Vector2Int(10, 10);
 
     private BuildableObject _buildingPrefab;
@@ -35,21 +36,23 @@ public class BuildableObjectGrid : MonoBehaviour
         }
     }
 
-    public void CreateBuilding(BuildableObject buildingPrefab)
+    public BuildableObject CreateBuilding(BuildableObject buildingPrefab, Vector3 position)
     {
         if (_buildingPrefab != null)
         {
             Destroy(_buildingPrefab.gameObject);
         }
 
-        _buildingPrefab = Instantiate(buildingPrefab);
-        _buildingPrefab.Init(this);
+        _buildingPrefab = Instantiate(buildingPrefab, position, Quaternion.identity);
+        _buildingPrefab.Init(this, _cameraFollower);
         _buildingPrefab.OnPositionSetted += ResetCurrentBuildable;
 
         int x = Mathf.RoundToInt(_buildingPrefab.transform.position.x);
         int y = Mathf.RoundToInt(_buildingPrefab.transform.position.z);
 
         _buildingPrefab.SetColor(CheckAvailability(x, y));
+
+        return _buildingPrefab;
     }
 
     public bool CheckAvailability(int x, int y)

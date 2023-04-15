@@ -11,6 +11,7 @@ public class BuildableObject : MonoBehaviour
     [SerializeField] private TopBuildingPopUp _buildPopUp;
     [SerializeField] private Button _buildButton;
 
+    private CameraFollower _cameraFollower;
     private BuildableObjectRenderer _renderer;
     private BuildingTouchHandler _touchHandler;
     private BuildableObjectGrid _grid;
@@ -28,9 +29,10 @@ public class BuildableObject : MonoBehaviour
         _touchHandler = gameObject.GetComponent<BuildingTouchHandler>();
     }
 
-    public void Init(BuildableObjectGrid grid)
+    public void Init(BuildableObjectGrid grid, CameraFollower cameraFollower)
     {
         _grid = grid;
+        _cameraFollower = cameraFollower;
     }
 
     private void OnEnable()
@@ -69,6 +71,7 @@ public class BuildableObject : MonoBehaviour
             _touchHandler.OnDrag -= Move;
             OnPositionSetted?.Invoke();
             _buildPopUp.Hide();
+            _cameraFollower.SetCharacterTarget();
         }
     }
 

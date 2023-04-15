@@ -6,29 +6,32 @@ public class StoreCategory : MonoBehaviour
     [SerializeField] private GameObject _categoryView;
     [SerializeField] private GameObject _itemsRowPrefab;
     [SerializeField] private StoreItem[] _items;
-    
+
     private void Mount(GameObject itemsRow, StoreItem item)
     {
-        if (item.isActiveAndEnabled && item.gameObject.activeInHierarchy)
+        if (item.gameObject != null)
         {
-            item.gameObject.transform.SetParent(itemsRow.gameObject.transform);
-        }
-        else
-        {
-            Instantiate(item, itemsRow.transform);
+            if (item.isActiveAndEnabled && item.gameObject.activeInHierarchy)
+            {
+                item.gameObject.transform.SetParent(itemsRow.gameObject.transform);
+            }
+            else
+            {
+                Instantiate(item, itemsRow.transform);
+            }
         }
     }
-    
+
     private void Init()
     {
         GameObject itemsRow = Instantiate(_itemsRowPrefab, _categoryView.GetComponent<ScrollRect>().content);
         for (var i = 0; i < _items.Length; i++)
         {
-            if(i != 0 && i % 3 == 0) itemsRow = Instantiate(_itemsRowPrefab, _categoryView.GetComponent<ScrollRect>().content);
+            if (i != 0 && i % 3 == 0) itemsRow = Instantiate(_itemsRowPrefab, _categoryView.GetComponent<ScrollRect>().content);
             Mount(itemsRow, _items[i]);
         }
     }
-    
+
     public void Start()
     {
         Init();
