@@ -1,19 +1,32 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using System.Collections; 
 using UnityEngine;
 
-[RequireComponent(typeof(IStorager))]
 public class Miner : MonoBehaviour
 {
+    [SerializeField] private Transform _toolPoint;
+    
+    private MiningTool _tool;
+    private float _miningSpeed = 3f;
+    
+    private CharacterAnimator _animator;
     private IStorager _storager;
-    private float _miningSpeed = 1f;
-    private bool _isMining = false;
 
+    private bool _isMining = false;
     public Action<int> OnMined;
+
+    public bool ToolIsSet => _tool != null;
+    
+    public void SetTool(MiningTool tool)
+    {
+        if(ToolIsSet) Destroy(_tool.gameObject);
+        _tool = Instantiate(tool, _toolPoint);
+        _miningSpeed = _tool.MiningSpeed;
+    }
 
     private void Start()
     {
+        _animator = GetComponent<CharacterAnimator>();
         _storager = GetComponent<IStorager>();
     }
 
@@ -25,6 +38,17 @@ public class Miner : MonoBehaviour
     private void OnDisable()
     {
         OnMined -= Storage;
+    }
+    
+    private void Update()
+    {
+        if (_isMining)
+        {
+            if (ToolIsSet)
+                _animator.SetMining();
+            else
+                _animator.SetGathering();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -38,7 +62,10 @@ public class Miner : MonoBehaviour
                 OnMined += EnableMining;
                 
                 _isMining = true;
-                mineable.Mine(OnMined, _miningSpeed);
+
+                var speed = ToolIsSet ? _tool.MiningSpeed : _miningSpeed;
+
+                mineable.Mine(OnMined, speed);
 
                 OnMined -= EnableMining;
             }
@@ -52,10 +79,10 @@ public class Miner : MonoBehaviour
         if (other.gameObject.TryGetComponent(out FieldMineableItem mineable) &&
             _storager.CanStorage(mineable.PlantsPerMine))
         {
-            mineable.StopMining();
             _isMining = false;
+            mineable.StopMining();
         }
     }
 
-    private void Storage(int count ) => _storager.Put(count);
+    private void Storage(int count ) => _storager.Add(count);
 }
