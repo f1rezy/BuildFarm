@@ -7,7 +7,7 @@ public class Miner : MonoBehaviour
     [SerializeField] private Transform _toolPoint;
     
     private MiningTool _tool;
-    private float _miningSpeed = 1f;
+    private float _miningSpeed = 3f;
     
     private CharacterAnimator _animator;
     private IStorager _storager;
@@ -16,14 +16,7 @@ public class Miner : MonoBehaviour
     public Action<int> OnMined;
 
     public bool ToolIsSet => _tool != null;
-    public bool IsMiningAnimation { get; private set; }
     
-    private IEnumerator MineAnimation()
-    {
-        yield return new WaitForSeconds(1f);
-        IsMiningAnimation = false;
-    }
-
     public void SetTool(MiningTool tool)
     {
         if(ToolIsSet) Destroy(_tool.gameObject);
@@ -49,13 +42,12 @@ public class Miner : MonoBehaviour
     
     private void Update()
     {
-        if (!IsMiningAnimation && _isMining)
+        if (_isMining)
         {
             if (ToolIsSet)
                 _animator.SetMining();
             else
                 _animator.SetGathering();
-            StartCoroutine(MineAnimation());
         }
     }
 
@@ -70,7 +62,10 @@ public class Miner : MonoBehaviour
                 OnMined += EnableMining;
                 
                 _isMining = true;
-                mineable.Mine(OnMined, _miningSpeed);
+
+                var speed = ToolIsSet ? _tool.MiningSpeed : _miningSpeed;
+
+                mineable.Mine(OnMined, speed);
 
                 OnMined -= EnableMining;
             }
@@ -84,8 +79,8 @@ public class Miner : MonoBehaviour
         if (other.gameObject.TryGetComponent(out FieldMineableItem mineable) &&
             _storager.CanStorage(mineable.PlantsPerMine))
         {
-            mineable.StopMining();
             _isMining = false;
+            mineable.StopMining();
         }
     }
 
