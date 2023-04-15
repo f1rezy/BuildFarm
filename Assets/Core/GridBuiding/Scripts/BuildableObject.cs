@@ -2,16 +2,22 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BuildableObject : MonoBehaviour
 {
-    [SerializeField] public Vector2Int _size = Vector2Int.one;
+    [SerializeField] private Vector2Int _size = Vector2Int.one;
+
+    [SerializeField] private TopBuildingPopUp _buildPopUp;
+    [SerializeField] private Button _buildButton;
 
     private BuildableObjectRenderer _renderer;
     private BuildingTouchHandler _touchHandler;
     private BuildableObjectGrid _grid;
 
     private bool _available = false;
+
+    public Vector2Int Size => _size;
 
     public Action<bool> OnPositionGhanged;
     public Action OnPositionSetted;
@@ -30,34 +36,39 @@ public class BuildableObject : MonoBehaviour
     private void OnEnable()
     {
         OnPositionGhanged += SetColor;
+        OnPositionGhanged += SetButtonInteractable;
         _touchHandler.OnDrag += Move;
-        _touchHandler.OnExit += Set;
+
+        _buildButton.onClick.AddListener(Set);
     }
 
     private void OnDisable()
     {
         OnPositionGhanged -= SetColor;
+        OnPositionGhanged += SetButtonInteractable;
         _touchHandler.OnDrag -= Move;
-        _touchHandler.OnExit -= Set;
     }
+
+    private void SetButtonInteractable(bool interactable) => _buildButton.interactable = interactable;
 
     private void Move(Vector3 position)
     {
-        int x = Mathf.RoundToInt(position.x) - _size.x;
-        int y = Mathf.RoundToInt(position.z) - _size.y;
+        int x = Mathf.RoundToInt(position.x) - _size.x / 2;
+        int y = Mathf.RoundToInt(position.z) - _size.y / 2;
 
         _available = _grid.CheckAvailability(x, y);
         transform.position = new Vector3(x, 0f, y);
         OnPositionGhanged?.Invoke(_available);
     }
 
-    private void Set()
+    public void Set()
     {
         if (_available)
         {
             _grid.SetToGrid(transform.position, _size);
             _touchHandler.OnDrag -= Move;
             OnPositionSetted?.Invoke();
+            _buildPopUp.Hide();
         }
     }
 
