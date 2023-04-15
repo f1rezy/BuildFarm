@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TreeOnGrid : MonoBehaviour
+public class GridEnviromentalObject : MonoBehaviour
 {
     [SerializeField] private BuildableObjectGrid _grid;
 
