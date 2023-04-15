@@ -78,13 +78,18 @@ public class BuildableObjectGrid : MonoBehaviour
             {
                 var position = new Vector2Int(placeX + x, placeY + y);
 
-                if (_grid.ContainsKey(position) && _grid[position] != null)
+                if (IsCellTaken(position))
                 {
                     return true;
                 }
             }
         }
         return false;
+    }
+
+    public bool IsCellTaken(Vector2Int position)
+    {
+        return _grid.ContainsKey(position) && _grid[position] != null;
     }
 
     private void OnDrawGizmos()
