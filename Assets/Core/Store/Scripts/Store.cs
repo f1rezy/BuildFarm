@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class Store : MonoBehaviour
 {
     [SerializeField] private StoreCategory[] _categories;
+
     private void SetActiveCategory(int idx)
     {
         for (int i = 0; i < _categories.Length; i++)
