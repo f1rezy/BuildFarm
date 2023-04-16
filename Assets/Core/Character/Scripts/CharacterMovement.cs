@@ -9,9 +9,7 @@ public class CharacterMovement : MonoBehaviour
     private Rigidbody _rigidbody;
     private CharacterAnimator _animator;
     private CharacterInput _input;
-    
-    private Vector3 _lastDeltaPosition;
-    
+
     private void Start()
     {
         _input = new CharacterInput();

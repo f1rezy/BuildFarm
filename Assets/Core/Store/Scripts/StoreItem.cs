@@ -5,14 +5,25 @@ public abstract class StoreItem : MonoBehaviour
 {
     [SerializeField] protected int _cost;
     [SerializeField] protected Button _buyButton;
+
+    [SerializeField] private Wallet _wallet;
     
     protected void Start()
     {
-        _buyButton.onClick.AddListener(Buy);
+        _buyButton.onClick.AddListener(TryBuy);
     }
 
     protected virtual void Buy()
     {
-        Debug.Log($"I bought for: {_cost.ToString()}");
+        
+    }
+
+    private void TryBuy()
+    {
+        if (_wallet.IsEnoughToTake(_cost))
+        {
+            _wallet.Take(_cost);
+            Buy();
+        }
     }
 }

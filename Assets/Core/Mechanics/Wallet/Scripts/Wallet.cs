@@ -8,16 +8,21 @@ public class Wallet : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _textCounter;
 
-    private int _count;
+    [SerializeField] private int _count = 150;
 
     public Action<int> OnCountChanged;
+
+    private void Start()
+    {
+        OnCountChanged?.Invoke(_count);
+    }
 
     public void Add(int count)
     {
         if (count < 0)
             throw new ArgumentException(nameof(count));
         _count += count;
-        OnCountChanged?.Invoke(count);
+        OnCountChanged?.Invoke(_count);
     }
 
     public void Take(int count)
@@ -25,7 +30,7 @@ public class Wallet : MonoBehaviour
         if (!IsEnoughToTake(count))
             throw new ArgumentException(nameof(count));
         _count -= count;
-        OnCountChanged?.Invoke(count);
+        OnCountChanged?.Invoke(_count);
     }
 
     public bool IsEnoughToTake(int count) => count <= _count;

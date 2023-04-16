@@ -4,6 +4,7 @@ public class BuildingItem: StoreItem
 {
     [SerializeField] private CameraFollower _cameraFollower;
     [SerializeField] private GameObject _marketView;
+
     [SerializeField] private BuildableObject _buildingPrefab;
     [SerializeField] private BuildableObjectGrid _buildableObjectGrid;
 
