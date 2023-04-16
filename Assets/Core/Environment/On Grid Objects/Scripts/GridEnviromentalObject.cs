@@ -27,7 +27,7 @@ public class GridEnviromentalObject : MonoBehaviour
     {
         var gridPosition = new Vector2Int(Mathf.RoundToInt(_grid.transform.position.x), Mathf.RoundToInt(_grid.transform.position.z));
 
-        if (_grid.IsCellTaken(gridPosition + _position))
+        if (_grid.IsCellTaken(_position - gridPosition))
             Destroy();
     }
 
