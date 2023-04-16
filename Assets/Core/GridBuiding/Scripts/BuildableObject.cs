@@ -16,7 +16,7 @@ public class BuildableObject : MonoBehaviour
     private BuildingTouchHandler _touchHandler;
     private BuildableObjectGrid _grid;
 
-    private bool _available = false;
+    private bool _available = true;
 
     public Vector2Int Size => _size;
 
@@ -33,6 +33,7 @@ public class BuildableObject : MonoBehaviour
     {
         _grid = grid;
         _cameraFollower = cameraFollower;
+        OnPositionGhanged?.Invoke(_grid.CheckAvailability());
     }
 
     private void OnEnable()
@@ -58,7 +59,7 @@ public class BuildableObject : MonoBehaviour
         int x = Mathf.RoundToInt(position.x) - _size.x / 2;
         int y = Mathf.RoundToInt(position.z) - _size.y / 2;
 
-        _available = _grid.CheckAvailability(x, y);
+        _available = _grid.CheckAvailability();
         transform.position = new Vector3(x, 0f, y);
         OnPositionGhanged?.Invoke(_available);
     }

@@ -27,8 +27,8 @@ public class BuildableObjectGrid : MonoBehaviour
 
     public void SetToGrid(Vector3 position, Vector2 size)
     {
-        int xPosition = Mathf.RoundToInt(position.x + transform.position.x);
-        int yPosition = Mathf.RoundToInt(position.z + transform.position.z);
+        int xPosition = Mathf.RoundToInt(position.x - transform.position.x);
+        int yPosition = Mathf.RoundToInt(position.z - transform.position.z);
 
         for (int x = xPosition; x < xPosition + size.x; x++)
         {
@@ -52,18 +52,30 @@ public class BuildableObjectGrid : MonoBehaviour
         _buildingPrefab.Init(this, _cameraFollower);
         _buildingPrefab.OnPositionSetted += ResetCurrentBuildable;
 
-        int x = Mathf.RoundToInt(_buildingPrefab.transform.position.x);
-        int y = Mathf.RoundToInt(_buildingPrefab.transform.position.z);
-
-        _buildingPrefab.SetColor(CheckAvailability(x, y));
+        _buildingPrefab.SetColor(CheckAvailability());
 
         return _buildingPrefab;
     }
 
-    public bool CheckAvailability(int x, int y)
+    public void CreateBuildingAndSet(BuildableObject building, Vector3 position)
     {
+        _buildingPrefab = building;
+        _buildingPrefab.transform.position = position;
+
+        _buildingPrefab.Init(this, _cameraFollower);
+        _buildingPrefab.OnPositionSetted += ResetCurrentBuildable;
+        _buildingPrefab.SetColor(CheckAvailability());
+
+        building.Set();
+    }
+
+    public bool CheckAvailability()
+    {
+        int x = Mathf.RoundToInt((_buildingPrefab.transform.position - transform.position).x);
+        int y = Mathf.RoundToInt((_buildingPrefab.transform.position - transform.position).z);
+
         bool available = true;
-        Vector3 offset = transform.position;
+        Vector3 offset = Vector3.zero; //transform.position;
 
         if (x < offset.x || x > _gridSize.x + offset.x - _buildingPrefab.Size.x) available = false;
         if (y < offset.z || y > _gridSize.y + offset.z - _buildingPrefab.Size.y) available = false;
