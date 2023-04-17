@@ -6,6 +6,7 @@ using TMPro;
 public class TopBuildingPopUp : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _text;
+    [SerializeField] private SmoothShowHide _smoothShowHide;
 
     public void UpdateText(string text)
     {
@@ -14,11 +15,11 @@ public class TopBuildingPopUp : MonoBehaviour
 
     public void Show()
     {
-        gameObject.SetActive(true);
+        _smoothShowHide.Show();
     }
 
     public void Hide()
     {
-        gameObject.SetActive(false);
+        _smoothShowHide.Hide();
     }
 }

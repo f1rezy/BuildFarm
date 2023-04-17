@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 898188859438809116}
   - component: {fileID: 8618674552599244922}
+  - component: {fileID: 420380152458291507}
+  - component: {fileID: 7651802425369563969}
   m_Layer: 0
   m_Name: Pop Up Building Button
   m_TagString: Untagged
@@ -46,6 +48,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 0}
+  _smoothShowHide: {fileID: 7651802425369563969}
+--- !u!225 &420380152458291507
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433359274605254260}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
+--- !u!114 &7651802425369563969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433359274605254260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d0301123b746984181df0bc5b21dc16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _group: {fileID: 420380152458291507}
+  _duration: 0.5
+  _curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _targetAlpha: 1
 --- !u!1 &2461981239498078767
 GameObject:
   m_ObjectHideFlags: 0

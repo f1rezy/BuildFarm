@@ -12,6 +12,7 @@ public class HangarWindow : MonoBehaviour
     [SerializeField] private Button _takeItems;
 
     [SerializeField] private Hangar _hangar;
+    [SerializeField] private SmoothShowHide _smoothShowHide;
     [SerializeField] private CharacterMovement _characterMovement;
 
     private IStorager _characterBag;
@@ -57,13 +58,13 @@ public class HangarWindow : MonoBehaviour
 
     public void Show()
     {
-        gameObject.SetActive(true);
         _characterMovement.enabled = false;
+        _smoothShowHide.Show();
     }
 
     public void Hide()
     {
-        gameObject?.SetActive(false);
+        _smoothShowHide.Hide();
         _characterMovement.enabled = true;
     }
 }

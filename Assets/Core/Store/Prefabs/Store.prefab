@@ -143,6 +143,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2388495819259930896}
   - component: {fileID: -2387341718277854744}
+  - component: {fileID: 2895053764375176421}
+  - component: {fileID: 595647163350415023}
   m_Layer: 5
   m_Name: Store
   m_TagString: Untagged
@@ -187,6 +189,58 @@ MonoBehaviour:
   - {fileID: 4246757339713381481}
   - {fileID: 742352597387153374}
   - {fileID: 8894836806944318928}
+  _smoothShowHide: {fileID: 595647163350415023}
+--- !u!225 &2895053764375176421
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3196794563041599913}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
+--- !u!114 &595647163350415023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3196794563041599913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d0301123b746984181df0bc5b21dc16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _group: {fileID: 2895053764375176421}
+  _duration: 0.5
+  _curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _targetAlpha: 1
 --- !u!1 &3215707075213323820
 GameObject:
   m_ObjectHideFlags: 0

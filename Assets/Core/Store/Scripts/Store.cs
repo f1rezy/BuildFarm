@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class Store : MonoBehaviour
 {
     [SerializeField] private StoreCategory[] _categories;
+    [SerializeField] private SmoothShowHide _smoothShowHide;
 
     private void SetActiveCategory(int idx)
     {
@@ -37,5 +38,15 @@ public class Store : MonoBehaviour
     {
         Init();
         SetActiveCategory(0);
+    }
+
+    public void Show()
+    {
+        _smoothShowHide.Show();
+    }
+
+    public void Hide()
+    {
+        _smoothShowHide.Hide();
     }
 }

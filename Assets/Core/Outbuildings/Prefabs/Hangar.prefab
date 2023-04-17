@@ -385,11 +385,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pop Up Item
       objectReference: {fileID: 0}
-    - target: {fileID: 2655307655217378440, guid: 4e8c34b9183454040aa3e87da9de01e9,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.95
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -421,11 +416,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7547340557145206674}
     m_Modifications:
-    - target: {fileID: 603137156904062225, guid: 3763da5ee641a4e47a76c608209a227f,
-        type: 3}
-      propertyPath: m_text
-      value: Open
-      objectReference: {fileID: 0}
     - target: {fileID: 898188859438809116, guid: 3763da5ee641a4e47a76c608209a227f,
         type: 3}
       propertyPath: m_RootOrder
@@ -493,39 +483,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9112782136846196276, guid: 3763da5ee641a4e47a76c608209a227f,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9112782136846196276, guid: 3763da5ee641a4e47a76c608209a227f,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9112782136846196276, guid: 3763da5ee641a4e47a76c608209a227f,
-        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2422532816607655125}
-    - target: {fileID: 9112782136846196276, guid: 3763da5ee641a4e47a76c608209a227f,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9112782136846196276, guid: 3763da5ee641a4e47a76c608209a227f,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Show
-      objectReference: {fileID: 0}
-    - target: {fileID: 9112782136846196276, guid: 3763da5ee641a4e47a76c608209a227f,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: HangarWindow, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 9112782136846196276, guid: 3763da5ee641a4e47a76c608209a227f,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -778,7 +738,7 @@ PrefabInstance:
     - target: {fileID: 7763184414531381690, guid: 557bd461e8849ad4a9f8892bd3664162,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

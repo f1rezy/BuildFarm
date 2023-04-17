@@ -874,6 +874,8 @@ GameObject:
   - component: {fileID: 6810278108076500493}
   - component: {fileID: 6382797198388151771}
   - component: {fileID: 6319619373493857988}
+  - component: {fileID: 4373135958668985168}
+  - component: {fileID: 1587966746718659261}
   m_Layer: 5
   m_Name: Hangar View
   m_TagString: Untagged
@@ -980,7 +982,59 @@ MonoBehaviour:
   _putItems: {fileID: 7985255122990400300}
   _takeItems: {fileID: 8714771873850173672}
   _hangar: {fileID: 0}
+  _smoothShowHide: {fileID: 1587966746718659261}
   _characterMovement: {fileID: 0}
+--- !u!225 &4373135958668985168
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7763184414531381690}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
+--- !u!114 &1587966746718659261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7763184414531381690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d0301123b746984181df0bc5b21dc16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _group: {fileID: 4373135958668985168}
+  _duration: 0.5
+  _curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _targetAlpha: 1
 --- !u!1 &8532181788747647963
 GameObject:
   m_ObjectHideFlags: 0

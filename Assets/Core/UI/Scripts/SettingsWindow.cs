@@ -5,16 +5,17 @@ using UnityEngine;
 public class SettingsWindow : MonoBehaviour
 {
     [SerializeField] private CharacterMovement _movement;
+    [SerializeField] private SmoothShowHide _smoothShowHide;
 
     public void Show()
     {
         _movement.enabled = false;
-        gameObject.SetActive(true);
+        _smoothShowHide.Show();
     }
 
     public void Hide()
     {
         _movement.enabled = true;
-        gameObject.SetActive(false);
+        _smoothShowHide.Hide();
     }
 }
