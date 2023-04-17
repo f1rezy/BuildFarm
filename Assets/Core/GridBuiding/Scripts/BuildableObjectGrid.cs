@@ -8,14 +8,62 @@ public class BuildableObjectGrid : MonoBehaviour
     [SerializeField] private CameraFollower _cameraFollower;
     [SerializeField] private Vector2Int _gridSize = new Vector2Int(10, 10);
 
+    [SerializeField] private BuildableObject _fieldPrefab;
+    [SerializeField] private BuildableObject _hangarPrefab;
+    [SerializeField] private BuildableObject _marketPrefab;
+
     private BuildableObject _buildingPrefab;
     private Dictionary<Vector2Int, BuildableObject> _grid;
 
     public Action OnBuilded;
 
+    public Dictionary<Vector2Int, BuildableObject>  Grid => _grid;
+
     private void Awake()
     {
         _grid = new Dictionary<Vector2Int, BuildableObject>(_gridSize.x * _gridSize.y);
+    }
+
+    public void InitFrom(GridInfo gridInfo)
+    {
+        _grid = new Dictionary<Vector2Int, BuildableObject>(_gridSize.x * _gridSize.y);
+
+        var buildings = gridInfo.BuildingInfos;
+
+        for (int i = 0; i < buildings.Length; i++)
+        {
+            SetBuildingToGrid(buildings[i]);
+        }
+    }
+
+    private void SetBuildingToGrid(BuildingInfo building)
+    {
+        for (int i = building.X; i < building.X + building.XSize; i++)
+        {
+            for (int j = building.Y; j < building.Y + building.YSize; j++)
+            {
+                var position = new Vector2Int(i, j);
+
+                BuildableObject buildableObject = null;
+                switch (building.Type)
+                {
+                    case "Field":
+                        buildableObject = Instantiate(_fieldPrefab);
+                        break;
+                    case "Hangar":
+                        buildableObject = Instantiate(_hangarPrefab);
+                        break;
+                    case "Market":
+                        buildableObject = Instantiate(_marketPrefab);
+                        break;
+
+                    default:
+                        throw new Exception();
+                }
+
+                _grid.Add(position, buildableObject);
+            }
+        }
     }
 
     private void ResetCurrentBuildable()
