@@ -7,15 +7,85 @@ public class BuildableObjectGrid : MonoBehaviour
 {
     [SerializeField] private CameraFollower _cameraFollower;
     [SerializeField] private Vector2Int _gridSize = new Vector2Int(10, 10);
+    [SerializeField] private JsonSaveService _jsonSaver;
+
+    [SerializeField] private BuildableObject _fieldPrefab;
+    [SerializeField] private BuildableObject _hangarPrefab;
+    [SerializeField] private BuildableObject _marketPrefab;
 
     private BuildableObject _buildingPrefab;
     private Dictionary<Vector2Int, BuildableObject> _grid;
 
     public Action OnBuilded;
 
+    public Dictionary<Vector2Int, BuildableObject> Grid => _grid;
+
     private void Awake()
     {
-        _grid = new Dictionary<Vector2Int, BuildableObject>(_gridSize.x * _gridSize.y);
+        var buildingInfos = new BuildingInfo[]
+        {
+            //тут задаешь дефолтные позиции для зданий которые есть в старте игры, если игрок зашел впервые и ничего не строил
+        };
+
+        var gridInfo = new GridInfo(buildingInfos);
+
+        // var json = тут получаешь строку с сервера
+        // var serverGridInfo = _jsonSaver.Get(json);
+
+        //if (serverGridInfo != null)
+        //    gridInfo = serverGridInfo;
+        InitFrom(gridInfo);
+    }
+
+    private void OnEnable()
+    {
+        OnBuilded += SaveToServer;
+    }
+
+    private void OnDisable()
+    {
+        OnBuilded -= SaveToServer;
+    }
+
+    private void SaveToServer()
+    {
+        var gridInfo = new GridInfo(this);
+        var json = _jsonSaver.Save(gridInfo);
+
+        //тут посылаешь json на сервер
+    }
+
+    private void InitFrom(GridInfo gridInfo)
+    {
+        _grid = new Dictionary<Vector2Int, BuildableObject>();
+
+        var buildings = gridInfo.BuildingInfos;
+
+        for (int i = 0; i < buildings.Length; i++)
+        {
+            SetBuildingToGrid(buildings[i]);
+        }
+    }
+
+    private void SetBuildingToGrid(BuildingInfo building)
+    {
+        var position = new Vector3(building.X, 0, building.Y);
+
+        BuildableObject buildableObject = null;
+        switch (building.Type)
+        {
+            case "Field":
+                buildableObject = CreateBuilding(_fieldPrefab, position);
+                break;
+            case "Hangar":
+                buildableObject = CreateBuilding(_hangarPrefab, position);
+                break;
+            case "Market":
+                buildableObject = CreateBuilding(_marketPrefab, position);
+                break;
+            default:
+                throw new Exception();
+        }
     }
 
     private void ResetCurrentBuildable()
