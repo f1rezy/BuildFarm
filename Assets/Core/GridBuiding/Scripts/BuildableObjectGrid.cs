@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BuildableObjectGrid : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class BuildableObjectGrid : MonoBehaviour
     [SerializeField] private Vector2Int _gridSize = new Vector2Int(10, 10);
     [SerializeField] private JsonSaveService _jsonSaver;
 
+    [SerializeField] private Root _root;
     [SerializeField] private Yandex _yandexService;
     [SerializeField] private Progress _progressService;
 
@@ -80,10 +82,14 @@ public class BuildableObjectGrid : MonoBehaviour
                 CreateBuildingAndSet(_fieldPrefab, position);
                 break;
             case "Hangar":
-                CreateBuildingAndSet(_hangarPrefab, position);
+                var buildedHangar = CreateBuildingAndSet(_hangarPrefab, position);
+                var view = buildedHangar.GetComponentInChildren<HangarWindow>();
+                view.Root = _root;
                 break;
             case "Market":
-                CreateBuildingAndSet(_marketPrefab, position);
+                var buildedMarket = CreateBuildingAndSet(_marketPrefab, position);
+                var button = buildedMarket.GetComponentInChildren<MarketButton>().Button;
+                button.onClick.AddListener(_root.MarketView.GetComponent<SmoothShowHide>().Show);
                 break;
             default:
                 throw new Exception();
@@ -129,7 +135,7 @@ public class BuildableObjectGrid : MonoBehaviour
         return _buildingPrefab;
     }
 
-    public void CreateBuildingAndSet(BuildableObject building, Vector3 position)
+    public BuildableObject CreateBuildingAndSet(BuildableObject building, Vector3 position)
     {
         //_buildingPrefab = Instantiate(building);
         //_buildingPrefab.transform.position = position;
@@ -141,6 +147,7 @@ public class BuildableObjectGrid : MonoBehaviour
         //building.Set();
         var buildingClone = CreateBuilding(building, position);
         buildingClone.Set();
+        return buildingClone;
     }
 
     public bool CheckAvailability()
