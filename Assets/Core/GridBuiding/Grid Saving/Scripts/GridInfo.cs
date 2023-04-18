@@ -14,6 +14,11 @@ public class GridInfo
         InitBuildingInfos(grid.Grid);
     }
 
+    public GridInfo(BuildingInfo[] buildingInfos)
+    {
+        _buildingInfos = buildingInfos;
+    }
+
     private void InitBuildingInfos(Dictionary<Vector2Int, BuildableObject> grid)
     {
         var buildings = grid.Values
@@ -37,30 +42,6 @@ public class GridInfo
             if (buildings[i].TryGetComponent(out Market market)) type = "Market";
 
             _buildingInfos[i] = new BuildingInfo(position.x, position.y, buildings[i].Size.x, buildings[i].Size.y, type);
-        }
-    }
-
-    public Dictionary<Vector2Int, BuildableObject> CreateGrid()
-    {
-        var grid = new Dictionary<Vector2Int, BuildableObject>();
-
-        for (int i = 0; i < _buildingInfos.Length; i++)
-        {
-            
-        }
-
-        return grid;
-    }
-
-    private void SetBuildingToGrid(BuildingInfo building, Dictionary<Vector2Int, BuildableObject> grid)
-    {
-        for (int i = building.X; i < building.X + building.XSize; i++)
-        {
-            for (int j = building.Y; j < building.Y + building.YSize; j++)
-            {
-                var position = new Vector2Int(i, j);
-                grid.Add(position, new BuildableObject());
-            }
         }
     }
 }
