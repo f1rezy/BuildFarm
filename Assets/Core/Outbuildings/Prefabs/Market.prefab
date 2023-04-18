@@ -38,6 +38,7 @@ Transform:
   - {fileID: 3196801417928031201}
   - {fileID: 6786998226681372549}
   - {fileID: 7423570333299044516}
+  - {fileID: 4267663803809978331}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -544,4 +545,99 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 898188859438809116, guid: 313abcf2aa499c146900c194c24dd629,
     type: 3}
   m_PrefabInstance: {fileID: 7742483671339937976}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7883460417204913746
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3620894499161863268}
+    m_Modifications:
+    - target: {fileID: 1124610025342678029, guid: a520c5c7ec6deb3438698173b2aac7d5,
+        type: 3}
+      propertyPath: _interactable
+      value: 
+      objectReference: {fileID: 1211834803484909409}
+    - target: {fileID: 1983309457768300868, guid: a520c5c7ec6deb3438698173b2aac7d5,
+        type: 3}
+      propertyPath: m_text
+      value: 'Market: come here to buy new buildings and tools or to swith plants
+        into coins!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6223522671908934025, guid: a520c5c7ec6deb3438698173b2aac7d5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6223522671908934025, guid: a520c5c7ec6deb3438698173b2aac7d5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6223522671908934025, guid: a520c5c7ec6deb3438698173b2aac7d5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6223522671908934025, guid: a520c5c7ec6deb3438698173b2aac7d5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6223522671908934025, guid: a520c5c7ec6deb3438698173b2aac7d5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6223522671908934025, guid: a520c5c7ec6deb3438698173b2aac7d5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6223522671908934025, guid: a520c5c7ec6deb3438698173b2aac7d5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6223522671908934025, guid: a520c5c7ec6deb3438698173b2aac7d5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6223522671908934025, guid: a520c5c7ec6deb3438698173b2aac7d5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6223522671908934025, guid: a520c5c7ec6deb3438698173b2aac7d5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6223522671908934025, guid: a520c5c7ec6deb3438698173b2aac7d5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446005613447895599, guid: a520c5c7ec6deb3438698173b2aac7d5,
+        type: 3}
+      propertyPath: m_Name
+      value: PushTip
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446005613447895599, guid: a520c5c7ec6deb3438698173b2aac7d5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a520c5c7ec6deb3438698173b2aac7d5, type: 3}
+--- !u!4 &4267663803809978331 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6223522671908934025, guid: a520c5c7ec6deb3438698173b2aac7d5,
+    type: 3}
+  m_PrefabInstance: {fileID: 7883460417204913746}
   m_PrefabAsset: {fileID: 0}

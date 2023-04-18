@@ -30,15 +30,15 @@ public class SmoothShowHide : MonoBehaviour
         }
         _group.interactable = false;
         _group.blocksRaycasts = false;
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 
     public void Show()
     {
+        gameObject.SetActive(true);
         _group.alpha = 0;
         _group.interactable = false;
         _group.blocksRaycasts = false;
-        gameObject.SetActive(true);
         StartCoroutine(SmoothShow(_duration));
     }
 

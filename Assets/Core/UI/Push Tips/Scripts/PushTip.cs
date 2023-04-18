@@ -5,12 +5,7 @@ using UnityEngine;
 public class PushTip : MonoBehaviour
 {
     [SerializeField] private BuildingInteractableArea _interactable;
-    private SmoothShowHide _smoothShowHide;
-
-    private void Awake()
-    {
-        _smoothShowHide = GetComponent<SmoothShowHide>();
-    }
+    [SerializeField ]private SmoothShowHide _smoothShowHide;
 
     private void OnEnable()
     {
