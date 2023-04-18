@@ -15,11 +15,12 @@ public class HangarWindow : MonoBehaviour
     [SerializeField] private SmoothShowHide _smoothShowHide;
     [SerializeField] private CharacterMovement _characterMovement;
 
+    public Root Root;
     private IStorager _characterBag;
 
     private void Start()
     {
-        _characterBag = _characterMovement.GetComponent<IStorager>();
+        _characterBag = Root.CharacterMovement.GetComponent<IStorager>();
 
         _putItems.onClick.AddListener(PutItems);
         _takeItems.onClick.AddListener(TakeItems);
@@ -58,13 +59,13 @@ public class HangarWindow : MonoBehaviour
 
     public void Show()
     {
-        _characterMovement.enabled = false;
+        Root.CharacterMovement.enabled = false;
         _smoothShowHide.Show();
     }
 
     public void Hide()
     {
         _smoothShowHide.Hide();
-        _characterMovement.enabled = true;
+        Root.CharacterMovement.enabled = true;
     }
 }
