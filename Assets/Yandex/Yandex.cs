@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class Yandex : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [DllImport("__Internal")]
+    private static extern void AddCoinsExtern(int value);
+
+    public void ShowAdvButton()
     {
-        
+        AddCoinsExtern(100);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AddCoins(int value)
     {
-        
+        // Тута начисляем монеты
     }
 }
