@@ -9,6 +9,9 @@ public class BuildableObjectGrid : MonoBehaviour
     [SerializeField] private Vector2Int _gridSize = new Vector2Int(10, 10);
     [SerializeField] private JsonSaveService _jsonSaver;
 
+    [SerializeField] private Yandex _yandexService;
+    [SerializeField] private Progress _progressService;
+
     [SerializeField] private BuildableObject _fieldPrefab;
     [SerializeField] private BuildableObject _hangarPrefab;
     [SerializeField] private BuildableObject _marketPrefab;
@@ -24,16 +27,18 @@ public class BuildableObjectGrid : MonoBehaviour
     {
         var buildingInfos = new BuildingInfo[]
         {
-            //тут задаешь дефолтные позиции для зданий которые есть в старте игры, если игрок зашел впервые и ничего не строил
+            //пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+            new BuildingInfo(-1, 6, _fieldPrefab.Size.x, _fieldPrefab.Size.y, "Field"),
+            new BuildingInfo(-9, 6, _hangarPrefab.Size.x, _hangarPrefab.Size.y, "Hangar"),
+            new BuildingInfo(5, 5, _marketPrefab.Size.x, _marketPrefab.Size.y, "Market"),
         };
 
         var gridInfo = new GridInfo(buildingInfos);
 
-        // var json = тут получаешь строку с сервера
-        // var serverGridInfo = _jsonSaver.Get(json);
+        var serverGridInfo = _progressService.GridInfo;
 
-        //if (serverGridInfo != null)
-        //    gridInfo = serverGridInfo;
+        if (serverGridInfo != null)
+            gridInfo = serverGridInfo;
         InitFrom(gridInfo);
     }
 
@@ -49,10 +54,8 @@ public class BuildableObjectGrid : MonoBehaviour
 
     private void SaveToServer()
     {
-        var gridInfo = new GridInfo(this);
-        var json = _jsonSaver.Save(gridInfo);
-
-        //тут посылаешь json на сервер
+        _progressService.GridInfo = new GridInfo(this);
+        _progressService.Save();
     }
 
     private void InitFrom(GridInfo gridInfo)
@@ -71,17 +74,16 @@ public class BuildableObjectGrid : MonoBehaviour
     {
         var position = new Vector3(building.X, 0, building.Y);
 
-        BuildableObject buildableObject = null;
         switch (building.Type)
         {
             case "Field":
-                buildableObject = CreateBuilding(_fieldPrefab, position);
+                CreateBuildingAndSet(_fieldPrefab, position);
                 break;
             case "Hangar":
-                buildableObject = CreateBuilding(_hangarPrefab, position);
+                CreateBuildingAndSet(_hangarPrefab, position);
                 break;
             case "Market":
-                buildableObject = CreateBuilding(_marketPrefab, position);
+                CreateBuildingAndSet(_marketPrefab, position);
                 break;
             default:
                 throw new Exception();
@@ -129,14 +131,16 @@ public class BuildableObjectGrid : MonoBehaviour
 
     public void CreateBuildingAndSet(BuildableObject building, Vector3 position)
     {
-        _buildingPrefab = building;
-        _buildingPrefab.transform.position = position;
+        //_buildingPrefab = Instantiate(building);
+        //_buildingPrefab.transform.position = position;
 
-        _buildingPrefab.Init(this, _cameraFollower);
-        _buildingPrefab.OnPositionSetted += ResetCurrentBuildable;
-        _buildingPrefab.SetColor(CheckAvailability());
+        //_buildingPrefab.Init(this, _cameraFollower);
+        //_buildingPrefab.OnPositionSetted += ResetCurrentBuildable;
+        //_buildingPrefab.SetColor(CheckAvailability());
 
-        building.Set();
+        //building.Set();
+        var buildingClone = CreateBuilding(building, position);
+        buildingClone.Set();
     }
 
     public bool CheckAvailability()

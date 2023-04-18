@@ -3,14 +3,9 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
-public class PlayerInfo
-{
-    // Пример дата класса
-}
-
 public class Progress : MonoBehaviour
 {
-    public PlayerInfo PlayerInfo;
+    public GridInfo GridInfo;
 
     [DllImport("__Internal")]
     private static extern void SaveExtern(string data);
@@ -36,12 +31,12 @@ public class Progress : MonoBehaviour
 
     public void Save()
     {
-        string jsonString = JsonUtility.ToJson(PlayerInfo);
+        string jsonString = JsonUtility.ToJson(GridInfo);
         SaveExtern(jsonString);
     }
 
     public void Load(string value)
     {
-        PlayerInfo = JsonUtility.FromJson<PlayerInfo>(value);
+        GridInfo = JsonUtility.FromJson<GridInfo>(value);
     }
 }
