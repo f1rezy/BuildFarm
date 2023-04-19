@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _miningTime: 1
-  _growthTime: 5
+  _growthTime: 90
   _hitEffectPrefab: {fileID: 7208510881644287311, guid: 414f4b3351286d24f82fbf06a85ffebc,
     type: 3}
   _animator: {fileID: 7693302531776186782}
