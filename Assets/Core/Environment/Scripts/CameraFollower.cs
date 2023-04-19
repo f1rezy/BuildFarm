@@ -37,6 +37,7 @@ public class CameraFollower : MonoBehaviour
         _targetSize = _buildingSize;
         StopAllCoroutines();
         StartCoroutine(SetCameraSize());
+        _smoothing = 1f;
     }
 
     public void SetCharacterTarget()
@@ -45,6 +46,7 @@ public class CameraFollower : MonoBehaviour
         _targetSize = _charactetSize;
         StopAllCoroutines();
         StartCoroutine(SetCameraSize());
+        _smoothing = 3f;
     }
 
     private IEnumerator SetCameraSize()
