@@ -8,6 +8,7 @@ public class FieldMineableItem : MonoBehaviour
     [SerializeField] private float _miningTime = 1f;
     [SerializeField] private float _growthTime = 60f;
 
+    [SerializeField] private HitEffect _hitEffectPrefab;
     [SerializeField] private FieldItemAnimator _animator;
 
     private float _growthProgress = 0f;
@@ -56,11 +57,18 @@ public class FieldMineableItem : MonoBehaviour
         OnGrowthProgressChanged?.Invoke(_growthProgress);
     }
 
+    private void MinedEffect(int value)
+    {
+        var effect = Instantiate(_hitEffectPrefab, transform.position + Vector3.up * 2, Quaternion.identity);
+        effect.Init(value);
+    }
+
     private IEnumerator StartMining(float miningSpeed, Action<int> onMined)
     {
         StartCoroutine(_animator.AnimateMining(_miningTime * miningSpeed));
         yield return new WaitForSeconds(_miningTime * miningSpeed);
 
+        MinedEffect(_plantsCount);
         onMined?.Invoke(_plantsCount);
         _growthProgress = 0f;
         OnGrowthProgressChanged?.Invoke(_growthProgress);

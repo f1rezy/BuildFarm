@@ -5,16 +5,17 @@ using UnityEngine;
 
 public class Yandex : MonoBehaviour
 {
+    [SerializeField] private Wallet _wallet;
     [DllImport("__Internal")]
     private static extern void AddCoinsExtern(int value);
 
-    public void ShowAdvButton()
+    public void ShowAdvButton(int value)
     {
-        AddCoinsExtern(100);
+        AddCoinsExtern(value);
     }
 
     public void AddCoins(int value)
     {
-        // Тута начисляем монеты
+        _wallet.Add(value);
     }
 }
