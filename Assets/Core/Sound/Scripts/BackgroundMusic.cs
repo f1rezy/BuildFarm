@@ -58,7 +58,6 @@ public class BackgroundMusic : MonoBehaviour
             _recharged = false;
             StartCoroutine(SmoothPacingVolume(_targetVolume, 1f, false));
         }
-        
         if (_audioSource.time >= _timeTrack)
         {
             _audioSource.Pause();

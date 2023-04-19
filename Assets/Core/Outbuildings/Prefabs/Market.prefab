@@ -168,6 +168,31 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3620894499161863268}
     m_Modifications:
+    - target: {fileID: 603137156904062225, guid: 3763da5ee641a4e47a76c608209a227f,
+        type: 3}
+      propertyPath: m_text
+      value: "\u041E\u0442\u043A\u0440\u044B\u0442\u044C"
+      objectReference: {fileID: 0}
+    - target: {fileID: 603137156904062225, guid: 3763da5ee641a4e47a76c608209a227f,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 603137156904062225, guid: 3763da5ee641a4e47a76c608209a227f,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 603137156904062225, guid: 3763da5ee641a4e47a76c608209a227f,
+        type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 603137156904062225, guid: 3763da5ee641a4e47a76c608209a227f,
+        type: 3}
+      propertyPath: m_enableWordWrapping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 898188859438809116, guid: 3763da5ee641a4e47a76c608209a227f,
         type: 3}
       propertyPath: m_RootOrder
@@ -597,8 +622,22 @@ PrefabInstance:
     - target: {fileID: 1983309457768300868, guid: a520c5c7ec6deb3438698173b2aac7d5,
         type: 3}
       propertyPath: m_text
-      value: 'Market: come here to buy new buildings and tools or to swith plants
-        into coins!'
+      value: "\u0420\u044B\u043D\u043E\u043A: \u0437\u0430\u0445\u043E\u0434\u0438\u0442\u0435
+        \u0441\u044E\u0434\u0430, \u0447\u0442\u043E\u0431\u044B \u043A\u0443\u043F\u0438\u0442\u044C
+        \u043D\u043E\u0432\u044B\u0435 \u0437\u0434\u0430\u043D\u0438\u044F \u0438
+        \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442\u044B \u0438\u043B\u0438
+        \u043E\u0431\u043C\u0435\u043D\u044F\u0442\u044C \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u044F
+        \u043D\u0430 \u043C\u043E\u043D\u0435\u0442\u044B!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1983309457768300868, guid: a520c5c7ec6deb3438698173b2aac7d5,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1983309457768300868, guid: a520c5c7ec6deb3438698173b2aac7d5,
+        type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6223522671908934025, guid: a520c5c7ec6deb3438698173b2aac7d5,
         type: 3}
@@ -663,6 +702,11 @@ PrefabInstance:
     - target: {fileID: 6446005613447895599, guid: a520c5c7ec6deb3438698173b2aac7d5,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6922000638528377176, guid: a520c5c7ec6deb3438698173b2aac7d5,
+        type: 3}
+      propertyPath: m_Alpha
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

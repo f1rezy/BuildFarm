@@ -19,6 +19,8 @@ public class SmoothShowHide : MonoBehaviour
             _group.alpha = _targetAlpha * _curve.Evaluate(i);
             yield return null;
         }
+
+        _group.alpha = 1f;
     }
 
     private IEnumerator SmoothHide(float duration)
@@ -30,6 +32,7 @@ public class SmoothShowHide : MonoBehaviour
         }
         _group.interactable = false;
         _group.blocksRaycasts = false;
+        _group.alpha = 0f;
         //gameObject.SetActive(false);
     }
 

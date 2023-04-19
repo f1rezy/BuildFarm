@@ -679,6 +679,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7547340557145206674}
     m_Modifications:
+    - target: {fileID: 603137156904062225, guid: 3763da5ee641a4e47a76c608209a227f,
+        type: 3}
+      propertyPath: m_text
+      value: "\u041E\u0442\u043A\u0440\u044B\u0442\u044C"
+      objectReference: {fileID: 0}
+    - target: {fileID: 603137156904062225, guid: 3763da5ee641a4e47a76c608209a227f,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 603137156904062225, guid: 3763da5ee641a4e47a76c608209a227f,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 898188859438809116, guid: 3763da5ee641a4e47a76c608209a227f,
         type: 3}
       propertyPath: m_RootOrder
@@ -1023,11 +1038,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4373135958668985168, guid: 557bd461e8849ad4a9f8892bd3664162,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4373135958668985168, guid: 557bd461e8849ad4a9f8892bd3664162,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4373135958668985168, guid: 557bd461e8849ad4a9f8892bd3664162,
+        type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4974819264913186108, guid: 557bd461e8849ad4a9f8892bd3664162,
+        type: 3}
+      propertyPath: m_text
+      value: "\u0412\u0437\u044F\u0442\u044C"
+      objectReference: {fileID: 0}
     - target: {fileID: 6319619373493857988, guid: 557bd461e8849ad4a9f8892bd3664162,
         type: 3}
       propertyPath: _hangar
       value: 
       objectReference: {fileID: 8330982487099234306}
+    - target: {fileID: 6364900085263314611, guid: 557bd461e8849ad4a9f8892bd3664162,
+        type: 3}
+      propertyPath: m_text
+      value: "\u0421\u043B\u043E\u0436\u0438\u0442\u044C"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6364900085263314611, guid: 557bd461e8849ad4a9f8892bd3664162,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 24.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6364900085263314611, guid: 557bd461e8849ad4a9f8892bd3664162,
+        type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7763184414531381690, guid: 557bd461e8849ad4a9f8892bd3664162,
         type: 3}
       propertyPath: m_Name
@@ -1077,8 +1127,20 @@ PrefabInstance:
     - target: {fileID: 1983309457768300868, guid: a520c5c7ec6deb3438698173b2aac7d5,
         type: 3}
       propertyPath: m_text
-      value: Hangars are used to store plants if you have too much to carry with
-        you
+      value: "\u0410\u043D\u0433\u0430\u0440\u044B \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u044E\u0442\u0441\u044F
+        \u0434\u043B\u044F \u0445\u0440\u0430\u043D\u0435\u043D\u0438\u044F \u0440\u0430\u0441\u0442\u0435\u043D\u0438\u0439,
+        \u0435\u0441\u043B\u0438 \u0443 \u0432\u0430\u0441 \u0438\u0445 \u0441\u043B\u0438\u0448\u043A\u043E\u043C
+        \u043C\u043D\u043E\u0433\u043E."
+      objectReference: {fileID: 0}
+    - target: {fileID: 1983309457768300868, guid: a520c5c7ec6deb3438698173b2aac7d5,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 27.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 1983309457768300868, guid: a520c5c7ec6deb3438698173b2aac7d5,
+        type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6223522671908934025, guid: a520c5c7ec6deb3438698173b2aac7d5,
         type: 3}

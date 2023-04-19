@@ -371,6 +371,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2175823652443868171}
   - component: {fileID: 4603164088729455615}
+  - component: {fileID: 5679858004329001034}
   m_Layer: 6
   m_Name: Animated
   m_TagString: Untagged
@@ -415,3 +416,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!225 &5679858004329001034
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8333350173525126437}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
