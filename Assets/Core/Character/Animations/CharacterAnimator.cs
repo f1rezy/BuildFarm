@@ -11,6 +11,8 @@ public class CharacterAnimator : MonoBehaviour
 
     public void SetIdle()
     {
+        _animator.SetBool(MiningBool, false);
+        _animator.SetBool(GatheringBool, false);
         _animator.SetTrigger(IdleTrigger);
     }
 

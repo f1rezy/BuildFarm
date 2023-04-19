@@ -8,12 +8,11 @@ public class CoinForAdItem : StoreItem
     [SerializeField] private int _amountCoins = 50;
     protected override void Buy()
     {
-        _yandexService.AddCoins(_amountCoins);
     }
 
     protected override void TryBuy()
     {
-        _yandexService.ShowAdvButton();
+        _yandexService.ShowAdvButton(_amountCoins);
         Buy();
     }
 }
