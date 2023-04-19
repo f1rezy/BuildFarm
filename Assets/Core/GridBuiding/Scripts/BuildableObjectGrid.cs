@@ -130,6 +130,12 @@ public class BuildableObjectGrid : MonoBehaviour
         _buildingPrefab.Init(this, _cameraFollower);
         _buildingPrefab.OnPositionSetted += ResetCurrentBuildable;
 
+        if (_buildingPrefab.TryGetComponent(out Hangar hangar))
+        {
+            var view = hangar.GetComponentInChildren<HangarWindow>();
+            view.Root = _root;
+        }
+
         _buildingPrefab.SetColor(CheckAvailability());
 
         return _buildingPrefab;
@@ -137,14 +143,6 @@ public class BuildableObjectGrid : MonoBehaviour
 
     public BuildableObject CreateBuildingAndSet(BuildableObject building, Vector3 position)
     {
-        //_buildingPrefab = Instantiate(building);
-        //_buildingPrefab.transform.position = position;
-
-        //_buildingPrefab.Init(this, _cameraFollower);
-        //_buildingPrefab.OnPositionSetted += ResetCurrentBuildable;
-        //_buildingPrefab.SetColor(CheckAvailability());
-
-        //building.Set();
         var buildingClone = CreateBuilding(building, position);
         buildingClone.Set();
         return buildingClone;
