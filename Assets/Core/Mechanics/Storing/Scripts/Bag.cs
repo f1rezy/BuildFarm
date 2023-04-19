@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,12 +9,16 @@ public class Bag : MonoBehaviour, IStorager
 
     [SerializeField] private int _taken = 0;
 
+    public Action<int> OnChanged;
+    public int Capacity => _capacity;
+
     public int Add(int count)
     {
         if (!CanStorage(count))
             count = _capacity - _taken;
         
         _taken += count;
+        OnChanged?.Invoke(_taken);
         return count;
     }
 
@@ -23,6 +28,7 @@ public class Bag : MonoBehaviour, IStorager
             count = _taken;
 
         _taken -= count;
+        OnChanged?.Invoke(_taken);
         return count;
     }
 
