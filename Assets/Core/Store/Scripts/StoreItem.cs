@@ -6,7 +6,7 @@ public abstract class StoreItem : MonoBehaviour
     [SerializeField] protected int _cost;
     [SerializeField] protected Button _buyButton;
 
-    [SerializeField] private Wallet _wallet;
+    [SerializeField] protected Wallet _wallet;
     
     protected void Start()
     {
@@ -18,7 +18,7 @@ public abstract class StoreItem : MonoBehaviour
         
     }
 
-    private void TryBuy()
+    protected virtual void TryBuy()
     {
         if (_wallet.IsEnoughToTake(_cost))
         {

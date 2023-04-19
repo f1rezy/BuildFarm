@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Security.Cryptography;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class StoreCategory : MonoBehaviour
@@ -18,6 +19,7 @@ public class StoreCategory : MonoBehaviour
             else
             {
                 Instantiate(item, itemsRow.transform);
+                Destroy(item.gameObject);
             }
         }
     }

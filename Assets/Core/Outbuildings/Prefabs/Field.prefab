@@ -690,6 +690,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3620894499161863268}
     m_Modifications:
+    - target: {fileID: 420380152458291507, guid: 313abcf2aa499c146900c194c24dd629,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 420380152458291507, guid: 313abcf2aa499c146900c194c24dd629,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 420380152458291507, guid: 313abcf2aa499c146900c194c24dd629,
+        type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 898188859438809116, guid: 313abcf2aa499c146900c194c24dd629,
         type: 3}
       propertyPath: m_RootOrder
