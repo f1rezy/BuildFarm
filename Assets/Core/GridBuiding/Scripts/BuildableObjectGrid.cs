@@ -10,6 +10,7 @@ public class BuildableObjectGrid : MonoBehaviour
     [SerializeField] private Vector2Int _gridSize = new Vector2Int(10, 10);
     [SerializeField] private JsonSaveService _jsonSaver;
 
+    [SerializeField] private TextAsset _textAsset;
     [SerializeField] private Root _root;
     [SerializeField] private Yandex _yandexService;
     [SerializeField] private Progress _progressService;
@@ -30,14 +31,39 @@ public class BuildableObjectGrid : MonoBehaviour
         var buildingInfos = new BuildingInfo[]
         {
             //��� ������� ��������� ������� ��� ������ ������� ���� � ������ ����, ���� ����� ����� ������� � ������ �� ������
-            new BuildingInfo(-1, 6, _fieldPrefab.Size.x, _fieldPrefab.Size.y, "Field"),
-            new BuildingInfo(-9, 6, _hangarPrefab.Size.x, _hangarPrefab.Size.y, "Hangar"),
-            new BuildingInfo(5, 5, _marketPrefab.Size.x, _marketPrefab.Size.y, "Market"),
+            new BuildingInfo()
+            {
+                X = -1,
+                Y = 6,
+                XSize = _fieldPrefab.Size.x,
+                YSize = _fieldPrefab.Size.y,
+                Type = "Field"
+            },
+            new BuildingInfo()
+            {
+                X = -9,
+                Y = 6,
+                XSize = _hangarPrefab.Size.x,
+                YSize = _hangarPrefab.Size.y,
+                Type = "Hangar"
+            },
+            new BuildingInfo()
+            {
+                X = 5,
+                Y = 5,
+                XSize = _marketPrefab.Size.x,
+                YSize = _marketPrefab.Size.y,
+                Type = "Market"
+            },
         };
 
-        var gridInfo = new GridInfo(buildingInfos);
+        // var json = "{\"BuildingInfos\":[{\"X\":38,\"Y\":42,\"XSize\":5,\"YSize\":5,\"Type\":\"Field\"},{\"X\":30,\"Y\":42,\"XSize\":7,\"YSize\":5,\"Type\":\"Hangar\"},{\"X\":44,\"Y\":41,\"XSize\":7,\"YSize\":7,\"Type\":\"Market\"},{\"X\":37,\"Y\":37,\"XSize\":5,\"YSize\":5,\"Type\":\"Field\"}]}";
+        // GridInfo gridInfo2 = JsonUtility.FromJson<GridInfo>(_textAsset.text);
+        // buildingInfos = gridInfo2.BuildingInfos;
 
-        var serverGridInfo = _progressService.GridInfo;
+        var gridInfo = new GridInfoBuilder(buildingInfos).GridInfo;
+        gridInfo = GridInfoSaver.LoadGridInfoToText(_textAsset.text);
+        var serverGridInfo = _progressService.gridInfo;
 
         if (serverGridInfo != null)
             gridInfo = serverGridInfo;
@@ -56,7 +82,7 @@ public class BuildableObjectGrid : MonoBehaviour
 
     private void SaveToServer()
     {
-        _progressService.GridInfo = new GridInfo(this);
+        _progressService.gridInfo = new GridInfoBuilder(this).GridInfo;
         _progressService.Save();
     }
 
@@ -75,7 +101,7 @@ public class BuildableObjectGrid : MonoBehaviour
     private void SetBuildingToGrid(BuildingInfo building)
     {
         var position = new Vector3(building.X, 0, building.Y);
-
+        Debug.Log($"{building.X.ToString()} {building.Y.ToString()}");
         switch (building.Type)
         {
             case "Field":
@@ -105,8 +131,8 @@ public class BuildableObjectGrid : MonoBehaviour
 
     public void SetToGrid(Vector3 position, Vector2 size)
     {
-        int xPosition = Mathf.RoundToInt(position.x - transform.position.x);
-        int yPosition = Mathf.RoundToInt(position.z - transform.position.z);
+        int xPosition = Mathf.RoundToInt(position.x);
+        int yPosition = Mathf.RoundToInt(position.z);
 
         for (int x = xPosition; x < xPosition + size.x; x++)
         {
@@ -143,21 +169,21 @@ public class BuildableObjectGrid : MonoBehaviour
 
     public BuildableObject CreateBuildingAndSet(BuildableObject building, Vector3 position)
     {
-        var buildingClone = CreateBuilding(building, position);
+        var buildingClone = CreateBuilding(building, position + transform.position);
         buildingClone.Set();
         return buildingClone;
     }
 
     public bool CheckAvailability()
     {
-        int x = Mathf.RoundToInt((_buildingPrefab.transform.position - transform.position).x);
-        int y = Mathf.RoundToInt((_buildingPrefab.transform.position - transform.position).z);
+        int x = Mathf.RoundToInt((_buildingPrefab.transform.position).x);
+        int y = Mathf.RoundToInt((_buildingPrefab.transform.position).z);
 
         bool available = true;
-        Vector3 offset = Vector3.zero; //transform.position;
+        Vector3 offset = transform.position; //transform.position;
 
-        if (x < offset.x || x > _gridSize.x + offset.x - _buildingPrefab.Size.x) available = false;
-        if (y < offset.z || y > _gridSize.y + offset.z - _buildingPrefab.Size.y) available = false;
+        if (x < offset.x || x > _gridSize.x - offset.x - _buildingPrefab.Size.x) available = false;
+        if (y < offset.z || y > _gridSize.y - offset.z - _buildingPrefab.Size.y) available = false;
 
         if (available && IsPlaceTaken(x, y)) available = false;
 

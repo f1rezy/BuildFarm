@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Progress : MonoBehaviour
 {
-    public GridInfo GridInfo;
+    public GridInfo gridInfo;
 
     [DllImport("__Internal")]
     private static extern void SaveExtern(string data);
@@ -31,12 +31,13 @@ public class Progress : MonoBehaviour
 
     public void Save()
     {
-        string jsonString = JsonUtility.ToJson(GridInfo);
-        SaveExtern(jsonString);
+        string jsonString = GridInfoSaver.SaveGridInfoToText(gridInfo);
+        Debug.Log(jsonString);
+        // SaveExtern(jsonString);
     }
 
     public void Load(string value)
     {
-        GridInfo = JsonUtility.FromJson<GridInfo>(value);
+        gridInfo = GridInfoSaver.LoadGridInfoToText(value);
     }
 }

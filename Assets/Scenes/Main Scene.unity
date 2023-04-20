@@ -1950,6 +1950,7 @@ MonoBehaviour:
   _cameraFollower: {fileID: 1164853021}
   _gridSize: {x: 78, y: 78}
   _jsonSaver: {fileID: 0}
+  _textAsset: {fileID: 4900000, guid: f841c2ad722d9684589228429b3ff79c, type: 3}
   _root: {fileID: 357774882}
   _yandexService: {fileID: 1923826166}
   _progressService: {fileID: 331365821}
@@ -4087,6 +4088,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6294962267187497745, guid: 09efa3bf18f5145459b4df0750ee6e4d,
+        type: 3}
+      propertyPath: _count
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 6294962267187497745, guid: 09efa3bf18f5145459b4df0750ee6e4d,
         type: 3}

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class JsonSaveService : MonoBehaviour
 {
-    public string Save(GridInfo data)
+    public string Save(GridInfoBuilder data)
     {
         return JsonUtility.ToJson(data);
     }
 
-    public GridInfo Get(string json)
+    public GridInfoBuilder Get(string json)
     {
-        return JsonUtility.FromJson<GridInfo>(json);
+        return JsonUtility.FromJson<GridInfoBuilder>(json);
     }
 }
