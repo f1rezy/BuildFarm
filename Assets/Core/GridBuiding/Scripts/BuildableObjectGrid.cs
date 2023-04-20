@@ -101,7 +101,6 @@ public class BuildableObjectGrid : MonoBehaviour
     private void SetBuildingToGrid(BuildingInfo building)
     {
         var position = new Vector3(building.X, 0, building.Y);
-        Debug.Log($"{building.X.ToString()} {building.Y.ToString()}");
         switch (building.Type)
         {
             case "Field":

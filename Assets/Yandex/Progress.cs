@@ -32,8 +32,7 @@ public class Progress : MonoBehaviour
     public void Save()
     {
         string jsonString = GridInfoSaver.SaveGridInfoToText(gridInfo);
-        Debug.Log(jsonString);
-        // SaveExtern(jsonString);
+        SaveExtern(jsonString);
     }
 
     public void Load(string value)
