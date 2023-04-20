@@ -57,7 +57,7 @@ public class BuildableObjectGrid : MonoBehaviour
     private void SaveToServer()
     {
         _progressService.GridInfo = new GridInfo(this);
-        //_progressService.Save();
+        _progressService.Save();
     }
 
     private void InitFrom(GridInfo gridInfo)
