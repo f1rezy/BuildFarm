@@ -168,7 +168,10 @@ public class BuildableObjectGrid : MonoBehaviour
 
     public BuildableObject CreateBuildingAndSet(BuildableObject building, Vector3 position)
     {
-        var buildingClone = CreateBuilding(building, position + transform.position);
+        if (!PlayerPrefs.HasKey("SaveFile"))
+            position += transform.position;
+
+        var buildingClone = CreateBuilding(building, position);
         buildingClone.Set();
         return buildingClone;
     }

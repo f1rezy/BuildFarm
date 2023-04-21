@@ -18,6 +18,9 @@
 
     public static GridInfo LoadGridInfoToText(string file)
     {
+        if (file == string.Empty)
+            return null;
+
         GridInfo gridInfo = new GridInfo();
         string[] lines = file.Split('\n');
         gridInfo.BuildingInfos = new BuildingInfo[int.Parse(lines[0])];

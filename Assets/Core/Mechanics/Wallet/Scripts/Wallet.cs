@@ -14,6 +14,8 @@ public class Wallet : MonoBehaviour
 
     private void Start()
     {
+        _count = PlayerPrefs.GetInt("Wallet", 120);
+
         OnCountChanged?.Invoke(_count);
     }
 
@@ -30,6 +32,7 @@ public class Wallet : MonoBehaviour
         if (!IsEnoughToTake(count))
             throw new ArgumentException(nameof(count));
         _count -= count;
+        Debug.Log(_count);
         OnCountChanged?.Invoke(_count);
     }
 
@@ -37,12 +40,19 @@ public class Wallet : MonoBehaviour
 
     private void OnEnable()
     {
+        OnCountChanged += Save;
         OnCountChanged += UpdateText;
     }
 
     private void OnDisable()
     {
+        OnCountChanged -= Save;
         OnCountChanged -= UpdateText;
+    }
+
+    private void Save(int value)
+    {
+        PlayerPrefs.SetInt("Wallet", value);
     }
 
     private void UpdateText(int count)
