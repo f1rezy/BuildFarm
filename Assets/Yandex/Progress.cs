@@ -21,8 +21,8 @@ public class Progress : MonoBehaviour
             transform.parent = null;
             DontDestroyOnLoad(gameObject);
             Instance = this;
-            //LoadExtern();
-            Load();
+            LoadExtern();
+            //Load();
         }
         else
         {
@@ -33,16 +33,18 @@ public class Progress : MonoBehaviour
     public void Save()
     {
         string jsonString = GridInfoSaver.SaveGridInfoToText(gridInfo);
-        //SaveExtern($"{{{jsonString}}}");
+        GridInfoData gridInfoData = new GridInfoData();
+        gridInfoData.Grid = jsonString;
+        string json = JsonUtility.ToJson(gridInfoData);
+        SaveExtern(json);
 
-        PlayerPrefs.SetString("SaveFile", jsonString);
+        //PlayerPrefs.SetString("SaveFile", jsonString);
     }
 
-    public void Load()
+    public void Load(string value)
     {
-        string value;
-
-        value = PlayerPrefs.GetString("SaveFile", string.Empty);
-        gridInfo = GridInfoSaver.LoadGridInfoToText(value);
+        //value = PlayerPrefs.GetString("SaveFile", string.Empty);
+        var gridInfoData = JsonUtility.FromJson<GridInfoData>(value);
+        gridInfo = GridInfoSaver.LoadGridInfoToText(gridInfoData.Grid);
     }
 }

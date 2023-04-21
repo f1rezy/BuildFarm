@@ -23,7 +23,7 @@ public class BuildableObjectGrid : MonoBehaviour
     private Dictionary<Vector2Int, BuildableObject> _grid;
 
     public Action OnBuilded;
-
+    public bool IsGetServerData = false;
     public Dictionary<Vector2Int, BuildableObject> Grid => _grid;
 
     private void Awake()
@@ -66,7 +66,10 @@ public class BuildableObjectGrid : MonoBehaviour
         var serverGridInfo = _progressService.gridInfo;
 
         if (serverGridInfo != null)
+        {
+            IsGetServerData = true;
             gridInfo = serverGridInfo;
+        }
         InitFrom(gridInfo);
     }
 
@@ -168,7 +171,7 @@ public class BuildableObjectGrid : MonoBehaviour
 
     public BuildableObject CreateBuildingAndSet(BuildableObject building, Vector3 position)
     {
-        if (!PlayerPrefs.HasKey("SaveFile"))
+        if (!PlayerPrefs.HasKey("SaveFile") || !IsGetServerData)
             position += transform.position;
 
         var buildingClone = CreateBuilding(building, position);

@@ -3,7 +3,10 @@ mergeInto(LibraryManager.library, {
   SaveExtern: function (data) {
     var dataString = UTF8ToString(data);
     var myObject = JSON.parse(dataString);
-    player.setData(myObject);
+    
+    player.setData(myObject).then(() => {
+      console.log("data is set")
+    });
   },
 
   LoadExtern: function () {
